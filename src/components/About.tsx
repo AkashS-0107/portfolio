@@ -71,10 +71,10 @@ export const About: React.FC = () => {
 
           <ScrollReveal delay={200}>
             <SlideDownPanel
-              title="Education & Academic Performance"
+              title="Education & Academic Background"
               subtitle="SRM Institute of Science and Technology | B.Tech AIML (2024 - 2028)"
               icon={GraduationCap}
-              badge="CGPA 7.10"
+              badge="Academic Standing"
               defaultOpen={false}
             >
               <div className="space-y-6">
@@ -88,7 +88,7 @@ export const About: React.FC = () => {
                   <p className="text-sm text-slate-400 mb-4">SRM Institute of Science and Technology, Ramapuram Campus</p>
                   <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-sky-500/10 border border-sky-500/30 text-sky-300 font-mono text-xs">
                     <Sparkles className="w-4 h-4 text-sky-400" />
-                    Current Academic CGPA: 7.10 / 10.0
+                    Academic Standing: Active Degree Candidate
                   </div>
                 </SpotlightCard>
 

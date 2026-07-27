@@ -73,7 +73,6 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
                   <span className="text-cyan-400 font-mono text-xs">Expected Grad: May 2028</span>
                 </div>
                 <div className="text-xs text-slate-400 mt-1">SRM Institute of Science and Technology, Ramapuram Campus</div>
-                <div className="text-xs font-mono text-cyan-300 mt-2">Current CGPA: 7.10</div>
               </div>
               <div className="grid grid-cols-2 gap-4 text-xs">
                 <div className="p-3 rounded-lg bg-slate-900 border border-slate-800">
