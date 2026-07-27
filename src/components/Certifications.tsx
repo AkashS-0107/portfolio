@@ -24,7 +24,7 @@ export const Certifications: React.FC = () => {
       title: 'Introduction to Operating Systems (Elite)',
       issuer: 'NPTEL, IIT Madras',
       date: 'Jul–Sep 2025',
-      badge: '60% Elite Standard',
+      badge: 'Elite Certification',
       featured: false
     },
     {

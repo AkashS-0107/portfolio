@@ -77,11 +77,11 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
               <div className="grid grid-cols-2 gap-4 text-xs">
                 <div className="p-3 rounded-lg bg-slate-900 border border-slate-800">
                   <div className="text-slate-400">Higher Secondary (12th)</div>
-                  <div className="text-white font-bold font-mono">64.33%</div>
+                  <div className="text-white font-bold font-mono">Completed</div>
                 </div>
                 <div className="p-3 rounded-lg bg-slate-900 border border-slate-800">
                   <div className="text-slate-400">Secondary (10th)</div>
-                  <div className="text-white font-bold font-mono">73.00%</div>
+                  <div className="text-white font-bold font-mono">Completed</div>
                 </div>
               </div>
             </div>
@@ -145,7 +145,7 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
               </div>
               <div className="p-2.5 rounded-lg bg-slate-900 border border-slate-800 flex items-center gap-2">
                 <CheckCircle2 className="w-4 h-4 text-cyan-400 shrink-0" />
-                <span>Intro to OS – NPTEL IIT Madras (Elite 60%, 2025)</span>
+                <span>Intro to OS – NPTEL IIT Madras (Elite Certification, 2025)</span>
               </div>
               <div className="p-2.5 rounded-lg bg-slate-900 border border-slate-800 flex items-center gap-2">
                 <CheckCircle2 className="w-4 h-4 text-cyan-400 shrink-0" />

@@ -74,7 +74,7 @@ export const About: React.FC = () => {
               title="Education & Academic Background"
               subtitle="SRM Institute of Science and Technology | B.Tech AIML (2024 - 2028)"
               icon={GraduationCap}
-              badge="Academic Standing"
+              badge="B.Tech AIML"
               defaultOpen={false}
             >
               <div className="space-y-6">
@@ -88,20 +88,20 @@ export const About: React.FC = () => {
                   <p className="text-sm text-slate-400 mb-4">SRM Institute of Science and Technology, Ramapuram Campus</p>
                   <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-sky-500/10 border border-sky-500/30 text-sky-300 font-mono text-xs">
                     <Sparkles className="w-4 h-4 text-sky-400" />
-                    Academic Standing: Active Degree Candidate
+                    Specializing in Artificial Intelligence & Machine Learning
                   </div>
                 </SpotlightCard>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div className="p-4 rounded-xl bg-slate-900 border border-slate-800">
                     <span className="text-xs font-mono text-slate-500">Higher Secondary (12th Grade)</span>
-                    <div className="text-lg font-bold text-white mt-1">64.33% Secured</div>
-                    <p className="text-xs text-slate-400 mt-1">Senior Secondary Board Examination</p>
+                    <div className="text-base font-bold text-white mt-1">Senior Secondary Education</div>
+                    <p className="text-xs text-slate-400 mt-1">Completed Board Examination</p>
                   </div>
                   <div className="p-4 rounded-xl bg-slate-900 border border-slate-800">
                     <span className="text-xs font-mono text-slate-500">Secondary (10th Grade)</span>
-                    <div className="text-lg font-bold text-white mt-1">73.00% Secured</div>
-                    <p className="text-xs text-slate-400 mt-1">Secondary School Board Examination</p>
+                    <div className="text-base font-bold text-white mt-1">Secondary Education</div>
+                    <p className="text-xs text-slate-400 mt-1">Completed Board Examination</p>
                   </div>
                 </div>
               </div>
