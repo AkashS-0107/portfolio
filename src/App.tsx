@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Analytics } from '@vercel/analytics/react';
 import KineticGrid from '@/components/ui/kinetic-grid';
 import { Navbar } from '@/components/Navbar';
 import RainingLetters from '@/components/ui/modern-animated-hero-section';
@@ -40,6 +41,9 @@ export function App() {
 
         {/* Resume Document Viewer Modal */}
         <ResumeModal isOpen={isResumeOpen} onClose={() => setIsResumeOpen(false)} />
+
+        {/* Vercel Analytics */}
+        <Analytics />
       </div>
     </KineticGrid>
   );
