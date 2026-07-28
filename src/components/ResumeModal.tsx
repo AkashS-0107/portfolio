@@ -46,7 +46,7 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
           {/* Resume Header */}
           <div className="pb-6">
             <h1 className="text-3xl font-extrabold text-white tracking-wider">AKASH SURESH</h1>
-            <p className="text-rose-400 text-sm font-medium mt-1">B.Tech Artificial Intelligence & Machine Learning Student</p>
+            <p className="text-rose-400 text-sm font-medium mt-1">B.Tech Computer Science & Engineering (Specialization in AI & ML)</p>
             
             <div className="flex flex-wrap gap-4 mt-4 text-xs text-slate-400">
               <span className="flex items-center gap-1"><MapPin className="w-3.5 h-3.5 text-rose-400" /> Chennai, Tamil Nadu, India</span>
@@ -59,7 +59,7 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
           <div>
             <h2 className="text-xs text-rose-400 uppercase tracking-wider font-semibold mb-2">Professional Summary</h2>
             <p className="text-sm leading-relaxed text-slate-300">
-              Third-year B.Tech student specializing in Artificial Intelligence and Machine Learning, with hands-on experience in Python, C/C++, and SQL/MongoDB-based application development. Practical experience working with modern AI development tools (Claude Code, Codex, Antigravity) and workflow automation (n8n) to build and optimize AI-agent-driven applications and websites. Detail-oriented, with a track record of quality assurance and UI improvement work on team software projects. Seeking an internship to apply technical and AI-tooling skills in a real-world engineering environment.
+              Third-year B.Tech student pursuing Computer Science and Engineering with specialization in Artificial Intelligence and Machine Learning, with hands-on experience in Python, C/C++, and SQL/MongoDB-based application development. Practical experience working with modern AI development tools (Claude Code, Codex, Antigravity) and workflow automation (n8n) to build and optimize AI-agent-driven applications and websites. Detail-oriented, with a track record of quality assurance and UI improvement work on team software projects. Seeking an internship to apply technical and AI-tooling skills in a real-world engineering environment.
             </p>
           </div>
 
@@ -69,7 +69,7 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
             <div className="space-y-3 text-sm">
               <div className="p-4 rounded-xl bg-rose-950/20">
                 <div className="flex justify-between font-bold text-white">
-                  <span>Bachelor of Technology (B.Tech) – Artificial Intelligence & Machine Learning</span>
+                  <span>Bachelor of Technology (B.Tech) – Computer Science & Engineering (Specialization in AI & ML)</span>
                   <span className="text-rose-400 text-xs font-medium">Expected Grad: May 2028</span>
                 </div>
                 <div className="text-xs text-slate-400 mt-1">SRM Institute of Science and Technology, Ramapuram Campus</div>

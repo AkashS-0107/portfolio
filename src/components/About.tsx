@@ -41,7 +41,7 @@ export const About: React.FC = () => {
             >
               <div className="space-y-4 text-slate-300 leading-relaxed text-sm sm:text-base">
                 <p>
-                  Third-year B.Tech student specializing in <strong className="text-white font-semibold">Artificial Intelligence and Machine Learning</strong> at SRM Institute of Science and Technology (Ramapuram Campus). Practical experience working with modern AI development tools (<strong className="text-white font-semibold">Claude Code, Codex, Antigravity</strong>) and workflow automation (<strong className="text-white font-semibold">n8n</strong>).
+                  Third-year B.Tech student pursuing <strong className="text-white font-semibold">Computer Science & Engineering with specialization in Artificial Intelligence and Machine Learning</strong> at SRM Institute of Science and Technology (Ramapuram Campus). Practical experience working with modern AI development tools (<strong className="text-white font-semibold">Claude Code, Codex, Antigravity</strong>) and workflow automation (<strong className="text-white font-semibold">n8n</strong>).
                 </p>
                 <p>
                   Detail-oriented with a strong track record in quality assurance, application testing, and UI usability improvements on collaborative team projects.
@@ -68,22 +68,22 @@ export const About: React.FC = () => {
           <ScrollReveal delay={200}>
             <SlideDownPanel
               title="Education & Academic Background"
-              subtitle="SRM Institute of Science and Technology | B.Tech AIML (2024 - 2028)"
+              subtitle="SRM Institute of Science and Technology | B.Tech CSE (AI & ML) (2024 - 2028)"
               icon={GraduationCap}
-              badge="B.Tech AIML"
+              badge="B.Tech CSE (AI/ML)"
               defaultOpen={false}
             >
               <div className="space-y-5">
                 <SpotlightCard className="p-6">
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
-                    <h4 className="text-lg font-bold text-white">Bachelor of Technology (B.Tech) – AI & ML</h4>
+                    <h4 className="text-lg font-bold text-white">Bachelor of Technology (B.Tech) – Computer Science & Engineering (Specialization in AI/ML)</h4>
                     <span className="px-3 py-1 rounded bg-rose-950/60 text-rose-400 text-xs font-medium">
                       Expected Grad: May 2028
                     </span>
                   </div>
                   <p className="text-sm text-slate-400 mb-3">SRM Institute of Science and Technology, Ramapuram Campus</p>
                   <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-rose-950/30 text-rose-300 text-xs">
-                    Specializing in Artificial Intelligence & Machine Learning
+                    Computer Science & Engineering • Specialization in Artificial Intelligence & Machine Learning
                   </div>
                 </SpotlightCard>
 
