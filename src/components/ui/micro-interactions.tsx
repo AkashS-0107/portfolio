@@ -39,7 +39,7 @@ export const MagneticButton: React.FC<MagneticButtonProps> = ({ children, classN
   );
 };
 
-// 2. Spotlight Card Component (HEX radial glow without RGB)
+// 2. Spotlight Card Component (Red Crimson Radial Glow)
 interface SpotlightCardProps {
   children: ReactNode;
   className?: string;
@@ -65,14 +65,14 @@ export const SpotlightCard: React.FC<SpotlightCardProps> = ({ children, classNam
       onMouseMove={handleMouseMove}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className={`relative overflow-hidden rounded-2xl bg-slate-900/40 border border-slate-800/80 backdrop-blur-xl transition-all duration-300 ${className}`}
+      className={`relative overflow-hidden rounded-2xl bg-[#0d090a]/80 border border-rose-900/40 backdrop-blur-xl transition-all duration-300 ${className}`}
     >
-      {/* Radial Gradient Overlay (HEX Alpha Only, NO RGB) */}
+      {/* Red Crimson Radial Gradient Overlay */}
       {isHovered && (
         <div
           className="pointer-events-none absolute -inset-px transition-opacity duration-300"
           style={{
-            background: `radial-gradient(550px circle at ${mousePos.x}px ${mousePos.y}px, #38bdf829, #818cf814 50%, transparent 80%)`
+            background: `radial-gradient(550px circle at ${mousePos.x}px ${mousePos.y}px, rgba(225, 29, 72, 0.15), rgba(190, 18, 60, 0.08) 50%, transparent 80%)`
           }}
         />
       )}
@@ -81,7 +81,7 @@ export const SpotlightCard: React.FC<SpotlightCardProps> = ({ children, classNam
   );
 };
 
-// 3. Slide-Down Panel Container
+// 3. Slide-Down Panel Container (Red Crimson Styled Accordion)
 interface SlideDownPanelProps {
   title: string;
   subtitle?: string;
@@ -102,20 +102,20 @@ export const SlideDownPanel: React.FC<SlideDownPanelProps> = ({
   const [isOpen, setIsOpen] = useState(defaultOpen);
 
   return (
-    <div className="rounded-2xl border border-slate-800/90 bg-[#0c1220]/80 backdrop-blur-xl overflow-hidden transition-all duration-300 hover:border-sky-500/40 shadow-xl">
+    <div className="rounded-2xl border border-rose-900/60 bg-[#140b0d]/90 backdrop-blur-xl overflow-hidden transition-all duration-300 hover:border-rose-700/80 shadow-xl">
       {/* Clickable Header */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="w-full px-6 py-5 flex items-center justify-between bg-slate-900/40 hover:bg-slate-900/80 transition-colors text-left group"
+        className="w-full px-6 py-5 flex items-center justify-between bg-slate-950/60 hover:bg-slate-950/90 transition-colors text-left group"
       >
         <div className="flex items-center gap-4">
           {Icon && (
-            <div className="p-3 rounded-xl bg-sky-950/80 border border-sky-500/30 text-sky-400 group-hover:scale-110 group-hover:border-indigo-400/50 transition-all">
+            <div className="p-3 rounded-xl bg-rose-950/80 border border-rose-800/60 text-rose-400 group-hover:scale-110 group-hover:border-rose-600 transition-all">
               <Icon className="w-5 h-5" />
             </div>
           )}
           <div>
-            <h3 className="text-lg font-bold text-white group-hover:text-sky-300 transition-colors">
+            <h3 className="text-lg font-bold text-white group-hover:text-rose-300 transition-colors">
               {title}
             </h3>
             {subtitle && <p className="text-xs font-mono text-slate-400 mt-0.5">{subtitle}</p>}
@@ -124,13 +124,13 @@ export const SlideDownPanel: React.FC<SlideDownPanelProps> = ({
 
         <div className="flex items-center gap-3">
           {badge && (
-            <span className="hidden sm:inline-block px-3 py-1 rounded-full bg-sky-950/80 border border-sky-500/30 text-sky-300 font-mono text-xs">
+            <span className="hidden sm:inline-block px-3 py-1 rounded-full bg-rose-950/80 border border-rose-800/60 text-rose-300 font-mono text-xs">
               {badge}
             </span>
           )}
           <div
-            className={`w-8 h-8 rounded-full bg-slate-900 border border-slate-800 flex items-center justify-center text-sky-400 transition-transform duration-300 ${
-              isOpen ? 'rotate-180 bg-sky-950 border-sky-500/40 text-indigo-400' : ''
+            className={`w-8 h-8 rounded-full bg-slate-900 border border-rose-900/60 flex items-center justify-center text-rose-400 transition-transform duration-300 ${
+              isOpen ? 'rotate-180 bg-rose-950 border-rose-700/80 text-rose-300' : ''
             }`}
           >
             ↓
@@ -141,7 +141,7 @@ export const SlideDownPanel: React.FC<SlideDownPanelProps> = ({
       {/* Slide Down Content */}
       <div
         className={`transition-all duration-500 ease-in-out overflow-hidden ${
-          isOpen ? 'max-h-[1200px] opacity-100 p-6 border-t border-slate-900' : 'max-h-0 opacity-0 p-0 border-none'
+          isOpen ? 'max-h-[1200px] opacity-100 p-6 border-t border-rose-900/40' : 'max-h-0 opacity-0 p-0 border-none'
         }`}
       >
         {children}

@@ -132,7 +132,7 @@ export default function KineticGrid({
     [],
   );
 
-  // ── Draw (100% Anti-RGB, HEX & Alpha Only) ──────────────────────────────────
+  // ── Draw (Red Crimson Hex & Alpha) ──────────────────────────────────
 
   const draw = useCallback(
     (now: number) => {
@@ -141,21 +141,35 @@ export default function KineticGrid({
       const ctx = canvas.getContext("2d");
       if (!ctx) return;
 
-      const { w: W, h: H } = sizeRef.current;
+      mouseRef.current.x = lerpN(
+        mouseRef.current.x,
+        targetMouseRef.current.x,
+        LERP_SPEED,
+      );
+      mouseRef.current.y = lerpN(
+        mouseRef.current.y,
+        targetMouseRef.current.y,
+        LERP_SPEED,
+      );
+
+      const W = sizeRef.current.w;
+      const H = sizeRef.current.h;
+      if (W === 0 || H === 0) return;
+
       const mouse = mouseRef.current;
       const ripples = ripplesRef.current;
 
       const theme = {
         default: {
-          bg: "#060913",
+          bg: "#0d090a",
           lineBaseHex: "#ffffff",
-          lineBaseAlpha: 0.1,
-          lineActiveHex: "#38bdf8",
+          lineBaseAlpha: 0.08,
+          lineActiveHex: "#e11d48",
           lineActiveAlpha: 0.85,
           nodeBaseHex: "#ffffff",
-          nodeActiveHex: "#818cf8",
-          glowHex: "#38bdf8",
-          rippleHex: "#38bdf8",
+          nodeActiveHex: "#be123c",
+          glowHex: "#e11d48",
+          rippleHex: "#e11d48",
         },
         monochrome: {
           bg: "#000000",
@@ -195,7 +209,6 @@ export default function KineticGrid({
         if (r.opacity <= 0) ripples.splice(i, 1);
       }
 
-      // Build grid
       const cols = Math.max(2, Math.ceil(W / CELL_SIZE)) + 1;
       const rows = Math.max(2, Math.ceil(H / CELL_SIZE)) + 1;
       const cellW = W / (cols - 1);
@@ -223,7 +236,7 @@ export default function KineticGrid({
         }
       }
 
-      // Grid lines drawing without RGB
+      // Grid lines drawing
       const drawSeg = (p1: Point, p2: Point, pr1: number, pr2: number) => {
         const avg = (pr1 + pr2) / 2;
         const t = avg * avg * (3 - 2 * avg);
@@ -257,7 +270,7 @@ export default function KineticGrid({
             prox[row + 1][col],
           );
 
-      // Intersection nodes without RGB
+      // Intersection nodes
       for (let row = 0; row < rows; row++) {
         for (let col = 0; col < cols; col++) {
           const p = pts[row][col];
@@ -285,105 +298,111 @@ export default function KineticGrid({
 
           ctx.beginPath();
           ctx.arc(p.x, p.y, r, 0, Math.PI * 2);
-          ctx.fillStyle = t > 0.4 ? getHexWithAlpha(theme.nodeActiveHex, 0.95) : getHexWithAlpha(theme.nodeBaseHex, 0.25);
+          ctx.fillStyle = getHexWithAlpha(
+            t > 0.4 ? theme.nodeActiveHex : theme.nodeBaseHex,
+            lerpN(0.2, 0.9, t),
+          );
           ctx.fill();
         }
       }
 
-      // Ripple rings without RGB
+      // Draw click ripples
       for (const r of ripples) {
-        const safeRadius = Math.max(0, r.radius);
-        ctx.beginPath();
-        ctx.arc(r.x, r.y, safeRadius, 0, Math.PI * 2);
-        ctx.strokeStyle = getHexWithAlpha(theme.rippleHex, r.opacity * 0.3);
-        ctx.lineWidth = 1.5;
-        ctx.stroke();
+        const rad = Math.max(0, r.radius);
+        if (rad > 0 && r.opacity > 0) {
+          ctx.beginPath();
+          ctx.arc(r.x, r.y, rad, 0, Math.PI * 2);
+          ctx.strokeStyle = getHexWithAlpha(theme.rippleHex, r.opacity * 0.5);
+          ctx.lineWidth = 1.5;
+          ctx.stroke();
+        }
       }
+
+      rafRef.current = requestAnimationFrame(draw);
     },
     [getWarpedPoint, globalColor],
   );
 
-  // ── Animation loop ──────────────────────────────────────────────────────────
+  // ── Handlers ────────────────────────────────────────────────────────────────
 
-  const animate = useCallback(
-    (now: number) => {
-      const m = mouseRef.current;
-      const t = targetMouseRef.current;
+  const handlePointerMove = useCallback((e: React.PointerEvent) => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const rect = canvas.getBoundingClientRect();
+    targetMouseRef.current = {
+      x: e.clientX - rect.left,
+      y: e.clientY - rect.top,
+    };
+  }, []);
 
-      m.x = lerpN(m.x, t.x, LERP_SPEED);
-      m.y = lerpN(m.y, t.y, LERP_SPEED);
+  const handlePointerLeave = useCallback(() => {
+    targetMouseRef.current = { x: -9999, y: -9999 };
+  }, []);
 
-      draw(now);
-      rafRef.current = requestAnimationFrame(animate);
-    },
-    [draw],
-  );
+  const handleClick = useCallback((e: React.MouseEvent) => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const rect = canvas.getBoundingClientRect();
+    ripplesRef.current.push({
+      x: e.clientX - rect.left,
+      y: e.clientY - rect.top,
+      radius: 0,
+      opacity: 1,
+      born: performance.now(),
+    });
+  }, []);
 
-  // ── Setup ───────────────────────────────────────────────────────────────────
+  // ── Resize Observer ─────────────────────────────────────────────────────────
 
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
 
-    const setSize = () => {
-      const w = window.innerWidth;
-      const h = window.innerHeight;
-      canvas.width = w;
-      canvas.height = h;
+    const updateSize = () => {
+      const parent = canvas.parentElement;
+      const w = parent ? parent.clientWidth : window.innerWidth;
+      const h = parent ? parent.clientHeight : window.innerHeight;
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+      canvas.width = w * dpr;
+      canvas.height = h * dpr;
       sizeRef.current = { w, h };
-      if (mouseRef.current.x === -9999) {
-        mouseRef.current = { x: -9999, y: -9999 };
-        targetMouseRef.current = { x: -9999, y: -9999 };
-      }
+
+      const ctx = canvas.getContext("2d");
+      if (ctx) ctx.scale(dpr, dpr);
     };
 
-    setSize();
-    window.addEventListener("resize", setSize);
+    updateSize();
 
-    const onMouseMove = (e: MouseEvent) => {
-      targetMouseRef.current = { x: e.clientX, y: e.clientY };
-    };
+    const ro = new ResizeObserver(updateSize);
+    if (canvas.parentElement) ro.observe(canvas.parentElement);
+    window.addEventListener("resize", updateSize);
 
-    const onClick = (e: MouseEvent) => {
-      ripplesRef.current.push({
-        x: e.clientX,
-        y: e.clientY,
-        radius: 0,
-        opacity: 1,
-        born: performance.now(),
-      });
-    };
-
-    window.addEventListener("mousemove", onMouseMove);
-    window.addEventListener("click", onClick);
-    rafRef.current = requestAnimationFrame(animate);
+    rafRef.current = requestAnimationFrame(draw);
 
     return () => {
-      window.removeEventListener("resize", setSize);
-      window.removeEventListener("mousemove", onMouseMove);
-      window.removeEventListener("click", onClick);
-      if (rafRef.current) {
-        cancelAnimationFrame(rafRef.current);
-      }
+      ro.disconnect();
+      window.removeEventListener("resize", updateSize);
+      cancelAnimationFrame(rafRef.current);
     };
-  }, [animate]);
-
-  // ── Render ──────────────────────────────────────────────────────────────────
+  }, [draw]);
 
   return (
     <div
       className={cn(
-        "relative w-full min-h-screen overflow-hidden",
-        globalColor === "monochrome" ? "bg-[#000000]" : "bg-[#060913]",
+        "relative w-full min-h-screen bg-[#0d090a] overflow-hidden selection:bg-rose-600 selection:text-white",
         className,
       )}
+      onPointerMove={handlePointerMove}
+      onPointerLeave={handlePointerLeave}
+      onClick={handleClick}
     >
       <canvas
         ref={canvasRef}
-        className="fixed inset-0 w-full h-full z-0 pointer-events-none"
+        className="absolute inset-0 pointer-events-none block w-full h-full"
       />
 
-      <div className="relative z-10 w-full h-full">{children}</div>
+      <div className="relative z-10 w-full min-h-screen">{children}</div>
     </div>
   );
 }
