@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import { Analytics } from '@vercel/analytics/react';
-import KineticGrid from '@/components/ui/kinetic-grid';
-import { Navbar } from '@/components/Navbar';
-import { WelcomeSection } from '@/components/WelcomeSection';
+import { AxionLandingPage } from '@/components/AxionLandingPage';
 import { About } from '@/components/About';
 import { Skills } from '@/components/Skills';
 import { Projects } from '@/components/Projects';
@@ -10,46 +8,45 @@ import { Certifications } from '@/components/Certifications';
 import { SocialConnect } from '@/components/ui/connect-with-us';
 import { Footer } from '@/components/Footer';
 import { ResumeModal } from '@/components/ResumeModal';
+import { AiAssistantWidget } from '@/components/ui/AiAssistantWidget';
 
 export function App() {
   const [isResumeOpen, setIsResumeOpen] = useState(false);
 
   return (
-    <KineticGrid globalColor="default">
-      <div className="min-h-screen text-slate-100 selection:bg-rose-600 selection:text-white font-sans">
-        {/* Navigation */}
-        <Navbar onOpenResume={() => setIsResumeOpen(true)} />
+    <div className="min-h-screen bg-[#0d090a] text-slate-100 selection:bg-[#F26522] selection:text-white font-sans">
+      {/* Axion / Akash Studio Landing Page (Sections 1, 2 & 3 with Animated Shaders, Text-Roll Buttons, Partner Badge & Case Studies) */}
+      <AxionLandingPage onOpenResume={() => setIsResumeOpen(true)} />
 
-        {/* Executive Welcome Hero Section */}
-        <WelcomeSection onOpenResume={() => setIsResumeOpen(true)} />
+      {/* About & Academic Profile */}
+      <About />
 
-        {/* About & Academic Profile */}
-        <About />
+      {/* Technical Stack */}
+      <Skills />
 
-        {/* Technical Stack */}
-        <Skills />
+      {/* Academic Projects */}
+      <Projects />
 
-        {/* Academic Projects */}
-        <Projects />
+      {/* Verified Certifications & Hackathons Section */}
+      <Certifications />
 
-        {/* Verified Certifications & Hackathons */}
-        <Certifications />
+      {/* 3D Social Connect End Section */}
+      <section id="connect">
+        <SocialConnect />
+      </section>
 
-        {/* 3D Social Connect End Section */}
-        <section id="connect">
-          <SocialConnect />
-        </section>
+      {/* Footer */}
+      <Footer />
 
-        {/* Footer */}
-        <Footer />
+      {/* Official Resume View Modal (Includes Academic CGPA 7.10 & Board Marks) */}
+      <ResumeModal isOpen={isResumeOpen} onClose={() => setIsResumeOpen(false)} />
 
-        {/* Official Resume View Modal (Includes Academic CGPA 7.10 & Board Marks) */}
-        <ResumeModal isOpen={isResumeOpen} onClose={() => setIsResumeOpen(false)} />
+      {/* Interactive AI Chat Assistant */}
+      <AiAssistantWidget onOpenResume={() => setIsResumeOpen(true)} />
 
-        {/* Vercel Analytics */}
-        <Analytics />
-      </div>
-    </KineticGrid>
+      {/* Vercel Analytics */}
+      <Analytics />
+    </div>
   );
 }
 
