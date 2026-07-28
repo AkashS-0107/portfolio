@@ -8,20 +8,20 @@ interface AxionLandingPageProps {
 }
 
 export const AxionLandingPage: React.FC<AxionLandingPageProps> = ({ onOpenResume }) => {
-  const [londonTime, setLondonTime] = useState<string>('');
+  const [localTime, setLocalTime] = useState<string>('');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  // Live London Time Clock Update
+  // Live Local / Chennai Time Clock Update
   useEffect(() => {
     const updateTime = () => {
       const now = new Date();
       const options: Intl.DateTimeFormatOptions = {
-        timeZone: 'Europe/London',
+        timeZone: 'Asia/Kolkata',
         hour: '2-digit',
         minute: '2-digit',
         hour12: false
       };
-      setLondonTime(new Intl.DateTimeFormat('en-GB', options).format(now));
+      setLocalTime(new Intl.DateTimeFormat('en-IN', options).format(now));
     };
 
     updateTime();
@@ -35,7 +35,7 @@ export const AxionLandingPage: React.FC<AxionLandingPageProps> = ({ onOpenResume
           SECTION 1: HERO (Full Viewport Height)
       ────────────────────────────────────────────────────────────────────────── */}
       <section className="relative min-h-screen w-full flex flex-col bg-[#EFEFEF] overflow-hidden">
-        {/* Animated Shader Background */}
+        {/* Animated Fluid Shader Background */}
         <ShaderHeroBackground />
 
         {/* Top Handle Navigation Bar (z-30) */}
@@ -58,11 +58,11 @@ export const AxionLandingPage: React.FC<AxionLandingPageProps> = ({ onOpenResume
             {/* RIGHT Desktop Items */}
             <div className="hidden md:flex items-center gap-5">
               <span className="text-[13px] text-gray-600 hidden lg:inline-block font-medium">
-                Taking on projects for Q1 2026
+                B.Tech CSE (AI & ML) @ SRMIST
               </span>
               <div className="flex items-center gap-1.5 text-[13px] text-gray-600 font-mono">
                 <Clock className="w-3.5 h-3.5 text-[#F26522]" />
-                <span>{londonTime || '12:00'} in London</span>
+                <span>{localTime || '12:00'} IST</span>
               </div>
 
               {/* Top Handle CTA Button */}
@@ -91,7 +91,7 @@ export const AxionLandingPage: React.FC<AxionLandingPageProps> = ({ onOpenResume
               <div className="flex items-center justify-between border-b border-gray-100 pb-4">
                 <div className="flex items-center gap-1.5 text-[13px] text-gray-600 font-mono">
                   <Clock className="w-3.5 h-3.5 text-[#F26522]" />
-                  <span>{londonTime} in London</span>
+                  <span>{localTime} IST</span>
                 </div>
                 <button
                   onClick={() => setMobileMenuOpen(false)}
@@ -126,16 +126,16 @@ export const AxionLandingPage: React.FC<AxionLandingPageProps> = ({ onOpenResume
 
         {/* Hero Content (z-20 Bottom Positioned) */}
         <div className="relative z-20 flex-1 flex flex-col justify-end max-w-[1440px] w-full mx-auto px-5 sm:px-8 lg:px-12 pb-14 sm:pb-16 lg:pb-20">
-          <div className="text-[13px] sm:text-[14px] text-gray-900 tracking-wide font-medium mb-4 sm:mb-6">
-            Akash Studio • Full Stack & AI Engineering
+          <div className="text-[13px] sm:text-[14px] text-gray-900 tracking-wide font-medium mb-4 sm:mb-6 uppercase">
+            Akash Suresh • Full Stack & AI Engineer
           </div>
 
           <h1 className="text-[clamp(1.75rem,7vw,4.2rem)] sm:text-[clamp(2.5rem,5vw,4.2rem)] font-medium leading-[1.08] tracking-[-0.03em] text-gray-900 max-w-5xl">
-            We craft digital experiences <br className="hidden sm:block" />
+            Building intelligent software systems <br className="hidden sm:block" />
             <span className="sm:hidden"> </span>
-            for brands ready to dominate <br className="hidden sm:block" />
+            and agentic AI workflows ready to scale <br className="hidden sm:block" />
             <span className="sm:hidden"> </span>
-            their category online.
+            in real-world production online.
           </h1>
 
           {/* CTA Row */}
@@ -154,8 +154,8 @@ export const AxionLandingPage: React.FC<AxionLandingPageProps> = ({ onOpenResume
               <svg className="w-5 h-5 sm:w-6 sm:h-6 fill-current text-[#E8704E]" viewBox="0 0 100 100">
                 <path d="m19.6 66.5 19.7-11 .3-1-.3-.5h-1l-3.3-.2-11.2-.3L14 53l-9.5-.5-2.4-.5L0 49l.2-1.5 2-1.3 2.9.2 6.3.5 9.5.6 6.9.4L38 49.1h1.6l.2-.7-.5-.4-.4-.4L29 41l-10.6-7-5.6-4.1-3-2-1.5-2-.6-4.2 2.7-3 3.7.3.9.2 3.7 2.9 8 6.1L37 36l1.5 1.2.6-.4.1-.3-.7-1.1L33 25l-6-10.4-2.7-4.3-.7-2.6c-.3-1-.4-2-.4-3l3-4.2L28 0l4.2.6L33.8 2l2.6 6 4.1 9.3L47 29.9l2 3.8 1 3.4.3 1h.7v-.5l.5-7.2 1-8.7 1-11.2.3-3.2 1.6-3.8 3-2L61 2.6l2 2.9-.3 1.8-1.1 7.7L59 27.1l-1.5 8.2h.9l1-1.1 4.1-5.4 6.9-8.6 3-3.5L77 13l2.3-1.8h4.3l3.1 4.7-1.4 4.9-4.4 5.6-3.7 4.7-5.3 7.1-3.2 5.7.3.4h.7l12-2.6 6.4-1.1 7.6-1.3 3.5 1.6.4 1.6-1.4 3.4-8.2 2-9.6 2-14.3 3.3-.2.1.2.3 6.4.6 2.8.2h6.8l12.6 1 3.3 2 1.9 2.7-.3 2-5.1 2.6-6.8-1.6-16-3.8-5.4-1.3h-.8v.4l4.6 4.5 8.3 7.5L89 80.1l.5 2.4-1.3 2-1.4-.2-9.2-7-3.6-3-8-6.8h-.5v.7l1.8 2.7 9.8 14.7.5 4.5-.7 1.4-2.6 1-2.7-.6-5.8-8-6-9-4.7-8.2-.5.4-2.9 30.2-1.3 1.5-3 1.2-2.5-2-1.4-3 1.4-6.2 1.6-8 1.3-6.4 1.2-7.9.7-2.6v-.2H49L43 72l-9 12.3-7.2 7.6-1.7.7-3-1.5.3-2.8L24 86l10-12.8 6-7.9 4-4.6-.1-.5h-.3L17.2 77.4l-4.7.6-2-2 .2-3 1-1 8-5.5Z"/>
               </svg>
-              <span className="text-[13px] sm:text-[14px] font-medium text-gray-900">Certified MongoDB Partner</span>
-              <span className="text-[10px] sm:text-[11px] bg-gray-900 text-white px-1.5 sm:px-2 py-0.5 rounded font-medium">Featured</span>
+              <span className="text-[13px] sm:text-[14px] font-medium text-gray-900">Certified MongoDB Student</span>
+              <span className="text-[10px] sm:text-[11px] bg-gray-900 text-white px-1.5 sm:px-2 py-0.5 rounded font-medium">Verified</span>
             </div>
           </div>
         </div>
@@ -172,15 +172,15 @@ export const AxionLandingPage: React.FC<AxionLandingPageProps> = ({ onOpenResume
               1
             </div>
             <span className="text-[12px] sm:text-[13px] font-medium border border-gray-200 rounded-full px-3 sm:px-4 py-1 sm:py-1.5 text-gray-800">
-              Introducing Akash Studio
+              Introducing Akash Suresh
             </span>
           </div>
 
           {/* Heading h2 */}
           <div className="px-5 sm:px-8 lg:px-12 mb-12 sm:mb-16 lg:mb-28">
             <h2 className="text-[clamp(1.5rem,4vw,3.2rem)] font-medium leading-[1.12] tracking-[-0.02em] text-gray-900 max-w-4xl">
-              Strategy-led creatives, delivering <br />
-              results in digital and beyond.
+              Engineering-led AI systems, delivering <br />
+              performance in full-stack and beyond.
             </h2>
           </div>
 
@@ -189,20 +189,20 @@ export const AxionLandingPage: React.FC<AxionLandingPageProps> = ({ onOpenResume
             {/* Mobile / Tablet Stacked View */}
             <div className="lg:hidden flex flex-col gap-8">
               <p className="text-[15px] sm:text-[17px] leading-[1.6] font-medium text-gray-900 max-w-xl">
-                Through research, creative thinking and iteration we help growing brands realize their digital full potential.
+                Through research, software testing, prompt optimization, and full-stack iteration, I help engineering teams build reliable digital applications.
               </p>
               <div>
-                <TextRollButton text="About our studio" variant="orange" href="#skills" />
+                <TextRollButton text="Technical Stack" variant="orange" href="#skills" />
               </div>
               <div className="flex flex-col sm:flex-row gap-4 sm:gap-5 pt-4">
                 <img
-                  src="https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260516_090123_74be96d4-9c1b-40cf-932a-96f4f4babed3.png&w=1280&q=85"
-                  alt="Axion Small Studio Showcase"
+                  src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=900&h=600&fit=crop&q=80"
+                  alt="Software Testing & Architecture"
                   className="sm:w-[45%] aspect-[438/346] rounded-xl sm:rounded-2xl object-cover"
                 />
                 <img
-                  src="https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260516_090133_c157d30b-a99a-4477-bec1-a446149ec3f2.png&w=1280&q=85"
-                  alt="Axion Large Studio Showcase"
+                  src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=900&h=600&fit=crop&q=80"
+                  alt="AI Agent Workflows & Automation"
                   className="sm:w-[55%] aspect-[900/600] rounded-xl sm:rounded-2xl object-cover"
                 />
               </div>
@@ -213,8 +213,8 @@ export const AxionLandingPage: React.FC<AxionLandingPageProps> = ({ onOpenResume
               {/* Left Column */}
               <div className="self-end">
                 <img
-                  src="https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260516_090123_74be96d4-9c1b-40cf-932a-96f4f4babed3.png&w=1280&q=85"
-                  alt="Axion Small Studio Showcase"
+                  src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=900&h=600&fit=crop&q=80"
+                  alt="Software Testing & Architecture"
                   className="w-full aspect-[438/346] rounded-2xl object-cover shadow-sm"
                 />
               </div>
@@ -222,21 +222,21 @@ export const AxionLandingPage: React.FC<AxionLandingPageProps> = ({ onOpenResume
               {/* Center Column */}
               <div className="self-start flex flex-col items-end justify-between h-full py-2">
                 <p className="text-[16px] xl:text-[18px] leading-[1.65] font-medium text-gray-900 whitespace-nowrap text-right">
-                  Through research, creative<br />
-                  thinking and iteration we help<br />
-                  growing brands realize their<br />
-                  digital full potential.
+                  Through research, software<br />
+                  testing, prompt optimization<br />
+                  and full-stack iteration, I help<br />
+                  teams build reliable digital tools.
                 </p>
                 <div className="mt-8">
-                  <TextRollButton text="About our studio" variant="orange" href="#skills" />
+                  <TextRollButton text="Technical Stack" variant="orange" href="#skills" />
                 </div>
               </div>
 
               {/* Right Column */}
               <div className="self-end">
                 <img
-                  src="https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260516_090133_c157d30b-a99a-4477-bec1-a446149ec3f2.png&w=1280&q=85"
-                  alt="Axion Large Studio Showcase"
+                  src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=900&h=600&fit=crop&q=80"
+                  alt="AI Agent Workflows & Automation"
                   className="w-full aspect-[3/2] rounded-2xl object-cover shadow-sm"
                 />
               </div>
@@ -256,14 +256,14 @@ export const AxionLandingPage: React.FC<AxionLandingPageProps> = ({ onOpenResume
               2
             </div>
             <span className="text-[12px] sm:text-[13px] font-medium border border-gray-300 rounded-full px-3 sm:px-4 py-1 sm:py-1.5 text-gray-800">
-              Featured client work
+              Featured Engineering Projects
             </span>
           </div>
 
           {/* Heading h2 */}
           <div className="px-5 sm:px-8 lg:px-12 mb-10 sm:mb-14 lg:mb-16">
             <h2 className="text-[clamp(1.75rem,7vw,4.2rem)] sm:text-[clamp(2.5rem,5vw,4.2rem)] font-medium leading-[1.08] tracking-[-0.03em] text-gray-900">
-              Our projects
+              Featured Projects
             </h2>
           </div>
 
@@ -282,18 +282,23 @@ export const AxionLandingPage: React.FC<AxionLandingPageProps> = ({ onOpenResume
                 />
 
                 {/* Hover expanding white button */}
-                <div className="absolute bottom-4 left-4 h-9 w-9 group-hover:w-[148px] bg-white rounded-full flex items-center px-2.5 overflow-hidden transition-all duration-300 ease-in-out shadow-lg">
+                <a
+                  href="https://github.com/AkashS-0107/worksure.git"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="absolute bottom-4 left-4 h-9 w-9 group-hover:w-[158px] bg-white rounded-full flex items-center px-2.5 overflow-hidden transition-all duration-300 ease-in-out shadow-lg"
+                >
                   <div className="shrink-0 w-4 h-4 flex items-center justify-center transition-transform duration-300 group-hover:rotate-45">
                     <LinkIcon className="w-3.5 h-3.5 text-gray-900" />
                   </div>
                   <span className="ml-2 text-[13px] font-medium text-gray-900 whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">
-                    Learn more
+                    View Repository
                   </span>
-                </div>
+                </a>
               </div>
 
               <p className="text-[13px] sm:text-[14px] text-gray-600 mt-4 leading-relaxed">
-                Winner of Site of the Month 2025 - an interactive 3D showcase driving record engagement
+                Featured Team Project – Skill verification, trust scores, verified credentials, and employer dashboards.
               </p>
               <h3 className="text-[14px] sm:text-[15px] font-semibold text-gray-900 mt-1">
                 WorkSure – Blue Collar Verification Ecosystem
@@ -313,18 +318,21 @@ export const AxionLandingPage: React.FC<AxionLandingPageProps> = ({ onOpenResume
                 />
 
                 {/* Hover expanding dark button */}
-                <div className="absolute bottom-4 left-4 h-9 w-9 group-hover:w-[168px] bg-gray-900 rounded-full flex items-center px-2.5 overflow-hidden transition-all duration-300 ease-in-out shadow-lg">
+                <a
+                  href="#projects"
+                  className="absolute bottom-4 left-4 h-9 w-9 group-hover:w-[148px] bg-gray-900 rounded-full flex items-center px-2.5 overflow-hidden transition-all duration-300 ease-in-out shadow-lg"
+                >
                   <div className="shrink-0 w-4 h-4 flex items-center justify-center transition-transform duration-300 group-hover:rotate-45">
                     <ArrowRight className="w-3.5 h-3.5 text-white" />
                   </div>
                   <span className="ml-2 text-[13px] font-medium text-white whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">
-                    View case study
+                    View Details
                   </span>
-                </div>
+                </a>
               </div>
 
               <p className="text-[13px] sm:text-[14px] text-gray-600 mt-4 leading-relaxed">
-                Transforming a dated platform into a conversion-focused brand experience
+                Academic Project – Managing patient admissions, room allocation, discharge workflows, and medicine inventory.
               </p>
               <h3 className="text-[14px] sm:text-[15px] font-semibold text-gray-900 mt-1">
                 Hospital Bed Management System
