@@ -2,12 +2,11 @@ import React, { useState } from 'react';
 import { Analytics } from '@vercel/analytics/react';
 import KineticGrid from '@/components/ui/kinetic-grid';
 import { Navbar } from '@/components/Navbar';
-import { WelcomeSection } from '@/components/WelcomeSection';
+import RainingLetters from '@/components/ui/modern-animated-hero-section';
 import { About } from '@/components/About';
 import { Skills } from '@/components/Skills';
 import { Projects } from '@/components/Projects';
 import { Certifications } from '@/components/Certifications';
-import { SocialConnect } from '@/components/ui/connect-with-us';
 import { Footer } from '@/components/Footer';
 import { ResumeModal } from '@/components/ResumeModal';
 
@@ -16,34 +15,31 @@ export function App() {
 
   return (
     <KineticGrid globalColor="default">
-      <div className="min-h-screen text-slate-100 selection:bg-rose-600 selection:text-white font-sans">
+      <div className="min-h-screen text-slate-100 selection:bg-cyan-500 selection:text-slate-950 font-sans">
         {/* Navigation */}
         <Navbar onOpenResume={() => setIsResumeOpen(true)} />
 
-        {/* Red Tone Executive Welcome Hero Section */}
-        <WelcomeSection onOpenResume={() => setIsResumeOpen(true)} />
+        {/* Hero Section */}
+        <section id="hero">
+          <RainingLetters />
+        </section>
 
-        {/* About & Academic Profile */}
+        {/* About & Education */}
         <About />
 
-        {/* Technical Stack */}
+        {/* Technical Skills & Stack */}
         <Skills />
 
         {/* Academic Projects */}
         <Projects />
 
-        {/* Verified Certifications & Hackathons */}
+        {/* Certifications & Hackathons */}
         <Certifications />
-
-        {/* 3D Social Connect End Section */}
-        <section id="connect">
-          <SocialConnect />
-        </section>
 
         {/* Footer */}
         <Footer />
 
-        {/* Official Resume View Modal (Includes Academic CGPA 7.10 & Board Marks) */}
+        {/* Resume Document Viewer Modal */}
         <ResumeModal isOpen={isResumeOpen} onClose={() => setIsResumeOpen(false)} />
 
         {/* Vercel Analytics */}

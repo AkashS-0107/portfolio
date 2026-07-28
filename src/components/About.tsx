@@ -18,7 +18,7 @@ export const About: React.FC = () => {
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <ScrollReveal>
           <div className="mb-3">
-            <span className="text-rose-300/90 text-xs font-semibold tracking-wider uppercase">Overview & Background</span>
+            <span className="text-sky-400 text-xs font-semibold tracking-wider uppercase">Overview & Background</span>
           </div>
 
           <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-white mb-4">
@@ -47,17 +47,17 @@ export const About: React.FC = () => {
                   Detail-oriented with a strong track record in quality assurance, application testing, and UI usability improvements on collaborative team projects.
                 </p>
                 
-                <div className="pt-4 grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs text-slate-400">
-                  <div className="flex items-center gap-2 p-2.5 rounded-lg bg-rose-950/20">
-                    <MapPin className="w-4 h-4 text-rose-300 shrink-0" />
+                <div className="pt-4 border-t border-slate-800/80 grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs text-slate-400">
+                  <div className="flex items-center gap-2 p-2.5 rounded-lg bg-slate-900/60 border border-slate-800">
+                    <MapPin className="w-4 h-4 text-sky-400 shrink-0" />
                     <span>Chennai, TN, India</span>
                   </div>
-                  <div className="flex items-center gap-2 p-2.5 rounded-lg bg-rose-950/20">
-                    <Mail className="w-4 h-4 text-rose-300 shrink-0" />
+                  <div className="flex items-center gap-2 p-2.5 rounded-lg bg-slate-900/60 border border-slate-800">
+                    <Mail className="w-4 h-4 text-sky-400 shrink-0" />
                     <span className="truncate">akashscontact7@gmail.com</span>
                   </div>
-                  <div className="flex items-center gap-2 p-2.5 rounded-lg bg-rose-950/20">
-                    <Phone className="w-4 h-4 text-rose-300 shrink-0" />
+                  <div className="flex items-center gap-2 p-2.5 rounded-lg bg-slate-900/60 border border-slate-800">
+                    <Phone className="w-4 h-4 text-sky-400 shrink-0" />
                     <span>+91 9363984548</span>
                   </div>
                 </div>
@@ -77,23 +77,23 @@ export const About: React.FC = () => {
                 <SpotlightCard className="p-6">
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
                     <h4 className="text-lg font-bold text-white">Bachelor of Technology (B.Tech) – Computer Science & Engineering (Specialization in AI/ML)</h4>
-                    <span className="px-3 py-1 rounded bg-rose-950/50 text-rose-300 text-xs font-medium border border-rose-900/30">
+                    <span className="px-3 py-1 rounded bg-slate-900 border border-slate-800 text-sky-400 text-xs font-medium">
                       Expected Grad: May 2028
                     </span>
                   </div>
                   <p className="text-sm text-slate-400 mb-3">SRM Institute of Science and Technology, Ramapuram Campus</p>
-                  <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-rose-950/25 text-rose-200/90 text-xs">
+                  <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-300 text-xs">
                     Computer Science & Engineering • Specialization in Artificial Intelligence & Machine Learning
                   </div>
                 </SpotlightCard>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div className="p-4 rounded-xl bg-rose-950/20">
+                  <div className="p-4 rounded-xl bg-slate-900/60 border border-slate-800">
                     <span className="text-xs text-slate-500 uppercase tracking-wider">Higher Secondary (12th Grade)</span>
                     <div className="text-base font-bold text-white mt-1">Senior Secondary Education</div>
                     <p className="text-xs text-slate-400 mt-1">Completed Board Examination</p>
                   </div>
-                  <div className="p-4 rounded-xl bg-rose-950/20">
+                  <div className="p-4 rounded-xl bg-slate-900/60 border border-slate-800">
                     <span className="text-xs text-slate-500 uppercase tracking-wider">Secondary (10th Grade)</span>
                     <div className="text-base font-bold text-white mt-1">Secondary Education</div>
                     <p className="text-xs text-slate-400 mt-1">Completed Board Examination</p>
@@ -115,7 +115,7 @@ export const About: React.FC = () => {
                 {competencies.map((item, idx) => (
                   <SpotlightCard key={idx} className="p-4">
                     <div className="flex items-center gap-3">
-                      <div className="p-2 rounded-lg bg-rose-950/40 text-rose-300">
+                      <div className="p-2 rounded-lg bg-slate-900 border border-slate-800 text-sky-400">
                         <CheckCircle2 className="w-4 h-4" />
                       </div>
                       <span className="text-sm font-medium text-slate-200">{item}</span>

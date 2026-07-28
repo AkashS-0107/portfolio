@@ -43,7 +43,7 @@ export const Projects: React.FC = () => {
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <ScrollReveal>
           <div className="mb-3">
-            <span className="text-rose-300/90 text-xs font-semibold tracking-wider uppercase">Project Vault</span>
+            <span className="text-sky-400 text-xs font-semibold tracking-wider uppercase">Project Vault</span>
           </div>
 
           <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-white mb-4">
@@ -74,24 +74,24 @@ export const Projects: React.FC = () => {
 
                     {/* Highlights Bullet list */}
                     <div className="space-y-2">
-                      <span className="text-xs text-rose-300/90 uppercase tracking-wider font-semibold block">
+                      <span className="text-xs text-sky-400 uppercase tracking-wider font-semibold block">
                         Key Engineering Contributions:
                       </span>
                       {project.highlights.map((item, hIdx) => (
                         <div key={hIdx} className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-300">
-                          <CheckCircle className="w-4 h-4 text-rose-300 shrink-0 mt-0.5" />
+                          <CheckCircle className="w-4 h-4 text-sky-400 shrink-0 mt-0.5" />
                           <span>{item}</span>
                         </div>
                       ))}
                     </div>
 
                     {/* Tech stack tags */}
-                    <div className="pt-4 flex flex-wrap items-center justify-between gap-4">
+                    <div className="pt-4 border-t border-slate-900 flex flex-wrap items-center justify-between gap-4">
                       <div className="flex flex-wrap gap-2">
                         {project.technologies.map((tech, tIdx) => (
                           <span
                             key={tIdx}
-                            className="px-3 py-1 rounded-md bg-rose-950/30 text-slate-300 text-xs font-medium"
+                            className="px-3 py-1 rounded-md bg-slate-900 border border-slate-800 text-slate-300 text-xs font-medium"
                           >
                             {tech}
                           </span>
@@ -105,7 +105,7 @@ export const Projects: React.FC = () => {
                             href={project.github}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="px-4 py-2 rounded-lg bg-rose-900/90 hover:bg-rose-800 text-rose-100 font-semibold text-xs transition-all flex items-center gap-2 border border-rose-700/40"
+                            className="px-4 py-2 rounded-lg bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold text-xs transition-all flex items-center gap-2"
                           >
                             <GithubIcon className="w-4 h-4" />
                             View Repository
