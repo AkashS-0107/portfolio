@@ -7,7 +7,6 @@ import { About } from '@/components/About';
 import { Skills } from '@/components/Skills';
 import { Projects } from '@/components/Projects';
 import { Certifications } from '@/components/Certifications';
-import { ResumeSection } from '@/components/ResumeSection';
 import { SocialConnect } from '@/components/ui/connect-with-us';
 import { Footer } from '@/components/Footer';
 import { ResumeModal } from '@/components/ResumeModal';
@@ -37,9 +36,6 @@ export function App() {
         {/* Verified Certifications & Hackathons */}
         <Certifications />
 
-        {/* Dedicated Resume Section (Embedded PDF Viewer) */}
-        <ResumeSection />
-
         {/* 3D Social Connect End Section */}
         <section id="connect">
           <SocialConnect />
@@ -48,7 +44,7 @@ export function App() {
         {/* Footer */}
         <Footer />
 
-        {/* Official Resume View Modal (Direct PDF Hooked) */}
+        {/* Official Resume View Modal (Triggered by RHS Resume button) */}
         <ResumeModal isOpen={isResumeOpen} onClose={() => setIsResumeOpen(false)} />
 
         {/* Interactive AI Chat Assistant Widget */}
