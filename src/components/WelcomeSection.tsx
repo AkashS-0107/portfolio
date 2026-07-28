@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowDown, Mail, Briefcase, ChevronRight, CheckCircle2 } from 'lucide-react';
+import { ArrowDown, FileText, Sparkles, Code2, Cpu, Database } from 'lucide-react';
 import { MagneticButton } from '@/components/ui/micro-interactions';
 import { ScrollReveal } from '@/components/ui/scroll-reveal';
 
@@ -9,92 +9,98 @@ interface WelcomeSectionProps {
 
 export const WelcomeSection: React.FC<WelcomeSectionProps> = ({ onOpenResume }) => {
   return (
-    <section id="welcome" className="relative w-full min-h-screen flex flex-col justify-between pt-24 pb-12 px-4 sm:px-6 lg:px-8">
-      {/* PART 1: Welcome & Featured HIRE ME Action */}
-      <div className="max-w-5xl mx-auto w-full text-center flex flex-col items-center gap-6 my-auto z-10">
+    <section id="welcome" className="relative w-full min-h-[92vh] flex flex-col justify-between pt-28 pb-10 px-4 sm:px-6 lg:px-8">
+      {/* Warm & Welcoming Intro Hero */}
+      <div className="max-w-4xl mx-auto w-full text-center flex flex-col items-center gap-6 my-auto z-10">
         <ScrollReveal>
-          {/* Micro Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-rose-900/40 bg-rose-950/30 text-rose-300 text-xs font-mono tracking-wider uppercase mb-2">
-            <span className="w-2 h-2 rounded-full bg-rose-400 animate-pulse" />
-            <span>Available For Engineering Internships & Projects</span>
+          {/* Subtle Welcoming Micro-Badge */}
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-rose-900/30 bg-rose-950/20 text-rose-300 text-xs tracking-wider uppercase mb-3">
+            <Sparkles className="w-3.5 h-3.5 text-rose-400" />
+            <span>Welcome to my digital space</span>
           </div>
 
-          {/* Executive Name & Title */}
+          {/* Warm Headline */}
           <h1 className="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight text-white leading-tight">
-            AKASH SURESH
+            Hi, I'm <span className="text-rose-400">Akash Suresh</span>
           </h1>
-          <p className="text-rose-400 font-mono text-sm sm:text-base font-semibold mt-1">
-            B.Tech Computer Science & Engineering (Specialization in AI & ML)
+          
+          <p className="text-slate-300 text-base sm:text-xl max-w-2xl font-normal leading-relaxed mt-2">
+            Full Stack & AI Engineer specializing in <strong className="text-white font-semibold">Computer Science & Engineering (AI/ML)</strong> at SRMIST.
           </p>
 
-          <p className="text-slate-300 text-base sm:text-lg max-w-2xl font-normal leading-relaxed mt-4">
-            Building intelligent software systems, agentic AI workflows, and responsive full-stack applications with <strong className="text-white">Python, React, MongoDB, and n8n</strong>.
+          <p className="text-slate-400 text-sm sm:text-base max-w-xl leading-relaxed mt-1">
+            Building autonomous AI agent workflows, software testing frameworks, and high-performance applications with React, Python, and MongoDB.
           </p>
 
-          {/* Featured HIRE ME Primary CTA */}
+          {/* Welcoming Action Buttons */}
           <div className="flex flex-wrap justify-center items-center gap-4 mt-8">
             <MagneticButton>
-              <button
-                onClick={onOpenResume}
-                className="px-8 py-4 rounded-xl bg-rose-900/90 hover:bg-rose-800 text-white font-bold text-sm uppercase tracking-wider transition-all duration-300 shadow-xl border border-rose-700/50 flex items-center gap-3 group"
+              <a
+                href="#showcase"
+                className="px-7 py-3.5 rounded-xl bg-rose-900/90 hover:bg-rose-800 text-white font-semibold text-xs uppercase tracking-wider transition-all duration-300 shadow-xl border border-rose-700/40 flex items-center gap-2"
               >
-                <Briefcase className="w-4 h-4 text-rose-300 group-hover:scale-110 transition-transform" />
-                <span>HIRE ME / VIEW RESUME</span>
-                <ChevronRight className="w-4 h-4 text-rose-300 group-hover:translate-x-1 transition-transform" />
-              </button>
+                <span>Explore Featured Work</span>
+                <ArrowDown className="w-4 h-4 text-rose-300" />
+              </a>
             </MagneticButton>
 
             <MagneticButton>
-              <a
-                href="mailto:akashscontact7@gmail.com"
-                className="px-6 py-4 rounded-xl bg-rose-950/40 hover:bg-rose-950/80 text-slate-200 font-semibold text-xs uppercase tracking-wider transition-all duration-300 border border-rose-950/60 flex items-center gap-2"
+              <button
+                onClick={onOpenResume}
+                className="px-6 py-3.5 rounded-xl bg-rose-950/40 hover:bg-rose-950/80 text-slate-200 font-semibold text-xs uppercase tracking-wider transition-all duration-300 border border-rose-950/60 flex items-center gap-2"
               >
-                <Mail className="w-4 h-4 text-rose-400" />
-                Contact Directly
-              </a>
+                <FileText className="w-4 h-4 text-rose-400" />
+                View Official Resume
+              </button>
             </MagneticButton>
           </div>
         </ScrollReveal>
       </div>
 
-      {/* PART 2: Quick About Me Snapshot & Scroll Tab */}
-      <div className="max-w-5xl mx-auto w-full z-10 pt-12">
+      {/* Inviting Scroll Prompt & Key Pillars */}
+      <div className="max-w-4xl mx-auto w-full z-10 pt-8">
         <ScrollReveal delay={200}>
-          <div className="p-6 rounded-2xl bg-[#140b0d]/90 border border-rose-950/60 shadow-xl grid grid-cols-1 md:grid-cols-3 gap-4 text-left">
-            <div className="flex items-start gap-3">
-              <CheckCircle2 className="w-5 h-5 text-rose-400 shrink-0 mt-0.5" />
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-left mb-6">
+            <div className="p-4 rounded-xl bg-rose-950/20 border border-rose-950/40 flex items-center gap-3">
+              <div className="p-2 rounded-lg bg-rose-950/60 text-rose-400 shrink-0">
+                <Code2 className="w-4 h-4" />
+              </div>
               <div>
-                <h4 className="text-sm font-bold text-white">SRMIST Engineering Student</h4>
-                <p className="text-xs text-slate-400 mt-0.5">3rd-Year B.Tech CSE AI/ML specialization in Chennai, TN</p>
+                <h4 className="text-xs font-bold text-white uppercase tracking-wider">Full-Stack Dev</h4>
+                <p className="text-[11px] text-slate-400">React, TypeScript & Tailwind</p>
               </div>
             </div>
 
-            <div className="flex items-start gap-3">
-              <CheckCircle2 className="w-5 h-5 text-rose-400 shrink-0 mt-0.5" />
+            <div className="p-4 rounded-xl bg-rose-950/20 border border-rose-950/40 flex items-center gap-3">
+              <div className="p-2 rounded-lg bg-rose-950/60 text-rose-400 shrink-0">
+                <Cpu className="w-4 h-4" />
+              </div>
               <div>
-                <h4 className="text-sm font-bold text-white">MongoDB Certified</h4>
-                <p className="text-xs text-slate-400 mt-0.5">Authorized NoSQL Database Basics Credential from MongoDB, Inc.</p>
+                <h4 className="text-xs font-bold text-white uppercase tracking-wider">AI Workflows</h4>
+                <p className="text-[11px] text-slate-400">Claude Code, Antigravity & n8n</p>
               </div>
             </div>
 
-            <div className="flex items-start gap-3">
-              <CheckCircle2 className="w-5 h-5 text-rose-400 shrink-0 mt-0.5" />
+            <div className="p-4 rounded-xl bg-rose-950/20 border border-rose-950/40 flex items-center gap-3">
+              <div className="p-2 rounded-lg bg-rose-950/60 text-rose-400 shrink-0">
+                <Database className="w-4 h-4" />
+              </div>
               <div>
-                <h4 className="text-sm font-bold text-white">AI Agent Tooling</h4>
-                <p className="text-xs text-slate-400 mt-0.5">Hands-on with Claude Code, Antigravity & n8n automation</p>
+                <h4 className="text-xs font-bold text-white uppercase tracking-wider">MongoDB Certified</h4>
+                <p className="text-[11px] text-slate-400">NoSQL & Relational SQL Systems</p>
               </div>
             </div>
           </div>
         </ScrollReveal>
 
-        {/* Scroll Tab Indicator */}
-        <div className="flex justify-center mt-8">
+        {/* Scroll Indicator */}
+        <div className="flex justify-center">
           <a
-            href="#about"
-            className="flex items-center gap-2 px-4 py-2 rounded-full bg-rose-950/40 text-rose-300 text-xs font-mono border border-rose-950/60 hover:border-rose-800/60 transition-all animate-bounce"
+            href="#showcase"
+            className="flex items-center gap-2 px-4 py-2 rounded-full bg-rose-950/30 text-slate-400 hover:text-rose-300 text-[11px] font-mono border border-rose-950/40 transition-all group"
           >
-            <span>SCROLL TO EXPLORE</span>
-            <ArrowDown className="w-3.5 h-3.5" />
+            <span>SCROLL TO EXPLORE WORK</span>
+            <ArrowDown className="w-3.5 h-3.5 text-rose-400 group-hover:translate-y-0.5 transition-transform" />
           </a>
         </div>
       </div>

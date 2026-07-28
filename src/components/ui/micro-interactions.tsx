@@ -1,18 +1,18 @@
 import React, { useState, useRef, ReactNode } from 'react';
 
-// 1. Magnetic Button Component
-interface MagneticButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+// 1. Magnetic Button Component (Div Wrapper to avoid nested button hydration warnings)
+interface MagneticButtonProps extends React.HTMLAttributes<HTMLDivElement> {
   children: ReactNode;
   className?: string;
 }
 
 export const MagneticButton: React.FC<MagneticButtonProps> = ({ children, className = '', ...props }) => {
-  const buttonRef = useRef<HTMLButtonElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
   const [position, setPosition] = useState({ x: 0, y: 0 });
 
-  const handleMouseMove = (e: React.MouseEvent<HTMLButtonElement>) => {
-    if (!buttonRef.current) return;
-    const { left, top, width, height } = buttonRef.current.getBoundingClientRect();
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!containerRef.current) return;
+    const { left, top, width, height } = containerRef.current.getBoundingClientRect();
     const x = (e.clientX - (left + width / 2)) * 0.35;
     const y = (e.clientY - (top + height / 2)) * 0.35;
     setPosition({ x, y });
@@ -23,8 +23,8 @@ export const MagneticButton: React.FC<MagneticButtonProps> = ({ children, classN
   };
 
   return (
-    <button
-      ref={buttonRef}
+    <div
+      ref={containerRef}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       style={{
@@ -35,7 +35,7 @@ export const MagneticButton: React.FC<MagneticButtonProps> = ({ children, classN
       {...props}
     >
       {children}
-    </button>
+    </div>
   );
 };
 
