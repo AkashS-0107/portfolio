@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Analytics } from '@vercel/analytics/react';
 import KineticGrid from '@/components/ui/kinetic-grid';
 import { Navbar } from '@/components/Navbar';
-import RainingLetters from '@/components/ui/modern-animated-hero-section';
+import ElegantCarousel from '@/components/ui/elegant-carousel';
 import { About } from '@/components/About';
 import { Skills } from '@/components/Skills';
 import { Projects } from '@/components/Projects';
@@ -15,13 +15,13 @@ export function App() {
 
   return (
     <KineticGrid globalColor="default">
-      <div className="min-h-screen text-slate-100 selection:bg-cyan-500 selection:text-slate-950 font-sans">
+      <div className="min-h-screen text-slate-100 selection:bg-rose-600 selection:text-white font-sans">
         {/* Navigation */}
         <Navbar onOpenResume={() => setIsResumeOpen(true)} />
 
-        {/* Hero Section */}
-        <section id="hero">
-          <RainingLetters />
+        {/* Welcome Section - Elegant Carousel */}
+        <section id="hero" className="pt-16">
+          <ElegantCarousel />
         </section>
 
         {/* About & Education */}
