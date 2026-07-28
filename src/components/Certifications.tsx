@@ -61,11 +61,11 @@ export const Certifications: React.FC = () => {
   ];
 
   return (
-    <section id="certifications" className="py-20 relative overflow-hidden border-t border-slate-800/60">
+    <section id="certifications" className="py-20 relative overflow-hidden">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <ScrollReveal>
           <div className="mb-3">
-            <span className="text-sky-400 text-xs font-semibold tracking-wider uppercase">Verification & Credentials</span>
+            <span className="text-rose-400 text-xs font-semibold tracking-wider uppercase">Verification & Credentials</span>
           </div>
 
           <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-white mb-10">
@@ -76,14 +76,14 @@ export const Certifications: React.FC = () => {
         <div className="space-y-5">
           {/* Featured MongoDB Certificate Spotlight Card */}
           <ScrollReveal delay={100}>
-            <SpotlightCard className="p-6 border-slate-800 bg-slate-900/60">
+            <SpotlightCard className="p-6 border-rose-950/40 bg-rose-950/20">
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-3">
                 <div className="flex items-center gap-3">
-                  <div className="p-3 rounded-xl bg-slate-900 border border-slate-800 text-sky-400">
+                  <div className="p-3 rounded-xl bg-rose-950/60 text-rose-400">
                     <Database className="w-5 h-5" />
                   </div>
                   <div>
-                    <span className="px-2.5 py-0.5 rounded bg-sky-500/10 border border-sky-500/30 text-sky-300 text-[11px]">
+                    <span className="px-2.5 py-0.5 rounded bg-rose-950/60 text-rose-300 text-[11px]">
                       Official Certification • MongoDB, Inc.
                     </span>
                     <h3 className="text-lg font-bold text-white mt-1">MongoDB Basics for Students</h3>
@@ -92,7 +92,7 @@ export const Certifications: React.FC = () => {
 
                 <div className="text-right">
                   <span className="text-xs text-slate-400 block">Issued: 07-04-2026</span>
-                  <span className="text-xs text-sky-400 block">ID: MDBnoiow5b82a</span>
+                  <span className="text-xs text-rose-400 block font-mono">ID: MDBnoiow5b82a</span>
                 </div>
               </div>
 
@@ -115,7 +115,7 @@ export const Certifications: React.FC = () => {
                 {certifications.map((item, idx) => (
                   <SpotlightCard key={idx} className="p-4">
                     <div className="flex items-center justify-between gap-2 mb-2">
-                      <span className="px-2 py-0.5 rounded bg-slate-900 border border-slate-800 text-sky-400 text-[10px] font-medium">
+                      <span className="px-2 py-0.5 rounded bg-rose-950/50 text-rose-400 text-[10px] font-medium">
                         {item.badge}
                       </span>
                       <span className="text-[10px] text-slate-400 flex items-center gap-1">
@@ -126,7 +126,7 @@ export const Certifications: React.FC = () => {
                     <h4 className="text-sm font-semibold text-white mb-0.5">{item.title}</h4>
                     <p className="text-xs text-slate-400">{item.issuer}</p>
                     {item.certId && (
-                      <span className="text-[10px] text-sky-400 mt-2 block font-mono">
+                      <span className="text-[10px] text-rose-400 mt-2 block font-mono">
                         Cert ID: {item.certId}
                       </span>
                     )}
@@ -149,14 +149,14 @@ export const Certifications: React.FC = () => {
                 {hackathons.map((h, idx) => (
                   <SpotlightCard key={idx} className="p-5">
                     <div className="flex items-center justify-between mb-2">
-                      <span className="text-xs text-sky-400 flex items-center gap-1.5 font-medium">
-                        <Flame className="w-4 h-4 text-sky-400" />
+                      <span className="text-xs text-rose-400 flex items-center gap-1.5 font-medium">
+                        <Flame className="w-4 h-4 text-rose-400" />
                         {h.date}
                       </span>
                       <span className="text-xs text-slate-400">{h.role}</span>
                     </div>
                     <h4 className="text-base font-bold text-white mb-1">{h.title}</h4>
-                    <p className="text-xs text-sky-300 mb-2">{h.organizer}</p>
+                    <p className="text-xs text-rose-300 mb-2">{h.organizer}</p>
                     <p className="text-xs text-slate-300 leading-relaxed">{h.desc}</p>
                   </SpotlightCard>
                 ))}

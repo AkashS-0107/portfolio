@@ -3,7 +3,7 @@ import React, { useEffect, useRef, useState, ReactNode } from 'react';
 interface ScrollRevealProps {
   children: ReactNode;
   className?: string;
-  delay?: number; // Delay in ms for staggered animation
+  delay?: number;
 }
 
 export const ScrollReveal: React.FC<ScrollRevealProps> = ({ children, className = '', delay = 0 }) => {
@@ -23,8 +23,8 @@ export const ScrollReveal: React.FC<ScrollRevealProps> = ({ children, className 
         });
       },
       {
-        threshold: 0.15,
-        rootMargin: '0px 0px -50px 0px'
+        threshold: 0.1,
+        rootMargin: '0px 0px -40px 0px'
       }
     );
 

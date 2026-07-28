@@ -20,14 +20,14 @@ interface Ripple {
 
 // ─── Constants ────────────────────────────────────────────────────────────────
 
-const CELL_SIZE = 55;
-const INFLUENCE_RADIUS = 260;
-const MAX_WARP = 24;
-const DOT_SPACING = 28;
+const CELL_SIZE = 60;
+const INFLUENCE_RADIUS = 240;
+const MAX_WARP = 20;
+const DOT_SPACING = 32;
 const LERP_SPEED = 0.08;
 
-const NODE_BASE_RADIUS = 1.8;
-const NODE_ACTIVE_RADIUS = 3.2;
+const NODE_BASE_RADIUS = 1.5;
+const NODE_ACTIVE_RADIUS = 2.8;
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 
@@ -35,7 +35,6 @@ function lerpN(a: number, b: number, t: number) {
   return a + (b - a) * t;
 }
 
-// Convert Hex color + alpha into Hex string with alpha (#RRGGBBAA)
 function getHexWithAlpha(hex: string, alpha: number): string {
   const cleanHex = hex.replace("#", "");
   const alphaHex = Math.round(Math.max(0, Math.min(1, alpha)) * 255)
@@ -105,7 +104,7 @@ export default function KineticGrid({
         const diff = rdist - r.radius;
         if (Math.abs(diff) < waveWidth) {
           const strength =
-            (1 - Math.abs(diff) / waveWidth) * r.opacity * 18 * pinFactor;
+            (1 - Math.abs(diff) / waveWidth) * r.opacity * 16 * pinFactor;
           const angle = Math.atan2(rdy, rdx);
           const sign = diff < 0 ? -1 : 1;
           rx += Math.cos(angle) * strength * sign * -1;
@@ -132,7 +131,7 @@ export default function KineticGrid({
     [],
   );
 
-  // ── Draw (100% Anti-RGB, HEX & Alpha Only) ──────────────────────────────────
+  // ── Draw (Red / Crimson Theme, Extremely Bland Subtle Lines) ───────────────
 
   const draw = useCallback(
     (now: number) => {
@@ -147,22 +146,22 @@ export default function KineticGrid({
 
       const theme = {
         default: {
-          bg: "#060913",
+          bg: "#0a0507",
           lineBaseHex: "#ffffff",
-          lineBaseAlpha: 0.1,
-          lineActiveHex: "#38bdf8",
-          lineActiveAlpha: 0.85,
+          lineBaseAlpha: 0.04,
+          lineActiveHex: "#ef4444",
+          lineActiveAlpha: 0.6,
           nodeBaseHex: "#ffffff",
-          nodeActiveHex: "#818cf8",
-          glowHex: "#38bdf8",
-          rippleHex: "#38bdf8",
+          nodeActiveHex: "#f87171",
+          glowHex: "#ef4444",
+          rippleHex: "#ef4444",
         },
         monochrome: {
           bg: "#000000",
           lineBaseHex: "#ffffff",
-          lineBaseAlpha: 0.08,
+          lineBaseAlpha: 0.03,
           lineActiveHex: "#ffffff",
-          lineActiveAlpha: 0.9,
+          lineActiveAlpha: 0.7,
           nodeBaseHex: "#ffffff",
           nodeActiveHex: "#ffffff",
           glowHex: "#ffffff",
@@ -176,12 +175,12 @@ export default function KineticGrid({
       ctx.fillStyle = theme.bg;
       ctx.fillRect(0, 0, W, H);
 
-      // Background dot texture using hex alpha
-      ctx.fillStyle = "#ffffff0d";
+      // Subtle background dot grid
+      ctx.fillStyle = "#ffffff08";
       for (let x = DOT_SPACING / 2; x < W; x += DOT_SPACING) {
         for (let y = DOT_SPACING / 2; y < H; y += DOT_SPACING) {
           ctx.beginPath();
-          ctx.arc(x, y, 0.7, 0, Math.PI * 2);
+          ctx.arc(x, y, 0.6, 0, Math.PI * 2);
           ctx.fill();
         }
       }
@@ -190,7 +189,7 @@ export default function KineticGrid({
       for (let i = ripples.length - 1; i >= 0; i--) {
         const r = ripples[i];
         const age = (now - r.born) / 1000;
-        r.radius = Math.max(0, age * 400);
+        r.radius = Math.max(0, age * 380);
         r.opacity = Math.max(0, 1 - age * 1.2);
         if (r.opacity <= 0) ripples.splice(i, 1);
       }
@@ -223,7 +222,7 @@ export default function KineticGrid({
         }
       }
 
-      // Grid lines drawing without RGB
+      // Grid lines
       const drawSeg = (p1: Point, p2: Point, pr1: number, pr2: number) => {
         const avg = (pr1 + pr2) / 2;
         const t = avg * avg * (3 - 2 * avg);
@@ -233,7 +232,7 @@ export default function KineticGrid({
         ctx.moveTo(p1.x, p1.y);
         ctx.lineTo(p2.x, p2.y);
         ctx.strokeStyle = t > 0.4 ? getHexWithAlpha(theme.lineActiveHex, currentAlpha) : getHexWithAlpha(theme.lineBaseHex, currentAlpha);
-        ctx.lineWidth = lerpN(0.8, 1.5, t);
+        ctx.lineWidth = lerpN(0.6, 1.2, t);
         ctx.stroke();
       };
 
@@ -257,7 +256,7 @@ export default function KineticGrid({
             prox[row + 1][col],
           );
 
-      // Intersection nodes without RGB
+      // Nodes
       for (let row = 0; row < rows; row++) {
         for (let col = 0; col < cols; col++) {
           const p = pts[row][col];
@@ -266,7 +265,7 @@ export default function KineticGrid({
           const r = lerpN(NODE_BASE_RADIUS, NODE_ACTIVE_RADIUS, t);
 
           if (t > 0.3) {
-            const glowR = r + lerpN(0, 6, (t - 0.3) / 0.7);
+            const glowR = r + lerpN(0, 5, (t - 0.3) / 0.7);
             const grd = ctx.createRadialGradient(
               p.x,
               p.y,
@@ -275,7 +274,7 @@ export default function KineticGrid({
               p.y,
               glowR,
             );
-            grd.addColorStop(0, getHexWithAlpha(theme.glowHex, t * 0.35));
+            grd.addColorStop(0, getHexWithAlpha(theme.glowHex, t * 0.3));
             grd.addColorStop(1, getHexWithAlpha(theme.glowHex, 0));
             ctx.beginPath();
             ctx.arc(p.x, p.y, glowR, 0, Math.PI * 2);
@@ -285,18 +284,18 @@ export default function KineticGrid({
 
           ctx.beginPath();
           ctx.arc(p.x, p.y, r, 0, Math.PI * 2);
-          ctx.fillStyle = t > 0.4 ? getHexWithAlpha(theme.nodeActiveHex, 0.95) : getHexWithAlpha(theme.nodeBaseHex, 0.25);
+          ctx.fillStyle = t > 0.4 ? getHexWithAlpha(theme.nodeActiveHex, 0.9) : getHexWithAlpha(theme.nodeBaseHex, 0.15);
           ctx.fill();
         }
       }
 
-      // Ripple rings without RGB
+      // Ripple rings
       for (const r of ripples) {
         const safeRadius = Math.max(0, r.radius);
         ctx.beginPath();
         ctx.arc(r.x, r.y, safeRadius, 0, Math.PI * 2);
-        ctx.strokeStyle = getHexWithAlpha(theme.rippleHex, r.opacity * 0.3);
-        ctx.lineWidth = 1.5;
+        ctx.strokeStyle = getHexWithAlpha(theme.rippleHex, r.opacity * 0.25);
+        ctx.lineWidth = 1.2;
         ctx.stroke();
       }
     },
@@ -374,7 +373,7 @@ export default function KineticGrid({
     <div
       className={cn(
         "relative w-full min-h-screen overflow-hidden",
-        globalColor === "monochrome" ? "bg-[#000000]" : "bg-[#060913]",
+        globalColor === "monochrome" ? "bg-[#000000]" : "bg-[#0a0507]",
         className,
       )}
     >
