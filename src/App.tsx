@@ -28,7 +28,7 @@ export function App() {
         {/* About & Academic Profile */}
         <About />
 
-        {/* Technical Stack & AI Tooling */}
+        {/* Technical Stack */}
         <Skills />
 
         {/* Featured Engineering Projects */}

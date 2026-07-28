@@ -39,23 +39,24 @@ export const Projects: React.FC = () => {
   ];
 
   return (
-    <section id="projects" className="py-20 relative overflow-hidden">
+    <section id="projects" className="py-24 relative overflow-hidden">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <ScrollReveal>
-          <div className="mb-3">
-            <span className="text-sky-400 text-xs font-semibold tracking-wider uppercase">Project Vault</span>
+          <div className="flex items-center gap-3 mb-4">
+            <div className="h-px w-8 bg-sky-500" />
+            <span className="font-mono text-sky-400 text-sm tracking-widest uppercase">// Project Vault</span>
           </div>
 
-          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-white mb-4">
-            Featured Engineering Projects
+          <h2 className="text-3xl sm:text-5xl font-bold tracking-tight text-white mb-4">
+            Featured <span className="text-sky-400 font-mono">Engineering Projects</span>
           </h2>
-          <p className="text-slate-400 text-base mb-10 max-w-2xl">
-            Expand any project panel below to inspect architecture, contributions, and source repositories.
+          <p className="text-slate-400 text-base mb-12 max-w-2xl">
+            Click to expand any project panel below to reveal system architecture, key contributions, and source repositories.
           </p>
         </ScrollReveal>
 
-        {/* Slide-Down Accordion Architecture */}
-        <div className="space-y-5">
+        {/* Scroll-Driven Slide-Down Accordion Architecture for Projects */}
+        <div className="space-y-6">
           {projects.map((project, idx) => {
             const Icon = project.icon;
             return (
@@ -67,14 +68,14 @@ export const Projects: React.FC = () => {
                   badge={project.badge}
                   defaultOpen={project.defaultOpen}
                 >
-                  <div className="space-y-5">
+                  <div className="space-y-6">
                     <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
                       {project.description}
                     </p>
 
                     {/* Highlights Bullet list */}
-                    <div className="space-y-2">
-                      <span className="text-xs text-sky-400 uppercase tracking-wider font-semibold block">
+                    <div className="space-y-2.5">
+                      <span className="text-xs font-mono text-sky-400 uppercase tracking-wider block">
                         Key Engineering Contributions:
                       </span>
                       {project.highlights.map((item, hIdx) => (
@@ -91,7 +92,7 @@ export const Projects: React.FC = () => {
                         {project.technologies.map((tech, tIdx) => (
                           <span
                             key={tIdx}
-                            className="px-3 py-1 rounded-md bg-slate-900 border border-slate-800 text-slate-300 text-xs font-medium"
+                            className="px-3 py-1 rounded-md bg-slate-900 border border-slate-800 text-sky-300 text-xs font-mono"
                           >
                             {tech}
                           </span>
@@ -105,7 +106,7 @@ export const Projects: React.FC = () => {
                             href={project.github}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="px-4 py-2 rounded-lg bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold text-xs transition-all flex items-center gap-2"
+                            className="px-4 py-2 rounded-lg bg-gradient-to-r from-sky-500 to-indigo-500 text-slate-950 font-bold text-xs font-mono transition-all shadow-[0_0_15px_#38bdf84d] flex items-center gap-2"
                           >
                             <GithubIcon className="w-4 h-4" />
                             View Repository

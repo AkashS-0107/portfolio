@@ -44,14 +44,11 @@ export const WelcomeSection: React.FC<WelcomeSectionProps> = ({ onOpenResume }) 
               </a>
             </MagneticButton>
 
-            <MagneticButton>
-              <button
-                onClick={onOpenResume}
-                className="px-6 py-3.5 rounded-xl bg-rose-950/40 hover:bg-rose-950/80 text-slate-200 font-semibold text-xs uppercase tracking-wider transition-all duration-300 border border-rose-950/60 flex items-center gap-2"
-              >
+            <MagneticButton onClick={onOpenResume}>
+              <span className="px-6 py-3.5 rounded-xl bg-rose-950/40 hover:bg-rose-950/80 text-slate-200 font-semibold text-xs uppercase tracking-wider transition-all duration-300 border border-rose-950/60 flex items-center gap-2 cursor-pointer">
                 <FileText className="w-4 h-4 text-rose-400" />
                 View Resume
-              </button>
+              </span>
             </MagneticButton>
           </div>
         </ScrollReveal>

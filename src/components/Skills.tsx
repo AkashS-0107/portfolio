@@ -45,7 +45,7 @@ export const Skills: React.FC = () => {
       ]
     },
     {
-      title: 'Databases & Tools',
+      title: 'Databases & Environments',
       icon: Database,
       badge: 'Dev Tooling',
       description: 'NoSQL and relational databases, administration, and version control.',
@@ -59,36 +59,37 @@ export const Skills: React.FC = () => {
   ];
 
   return (
-    <section id="skills" className="py-20 relative overflow-hidden border-t border-slate-800/60">
+    <section id="skills" className="py-24 relative overflow-hidden border-t border-slate-800/80">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <ScrollReveal>
-          <div className="mb-3">
-            <span className="text-sky-400 text-xs font-semibold tracking-wider uppercase">Technical Stack</span>
+          <div className="flex items-center gap-3 mb-4">
+            <div className="h-px w-8 bg-sky-500" />
+            <span className="font-mono text-sky-400 text-sm tracking-widest uppercase">// Technical Stack</span>
           </div>
 
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
             <div>
-              <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-white">
-                Skills & Technical Expertise
+              <h2 className="text-3xl sm:text-5xl font-bold tracking-tight text-white">
+                Skills & <span className="text-sky-400 font-mono">Micro-Matrix</span>
               </h2>
               <p className="text-slate-400 text-base mt-2 max-w-xl">
-                Select a category below to view detailed skill proficiencies.
+                Click on any category tab or expand the slide-down drawer below to inspect detailed skill proficiencies.
               </p>
             </div>
 
-            {/* Category Selector Tabs */}
+            {/* Interactive Category Selector Tabs */}
             <div className="flex flex-wrap gap-2">
               {skillCategories.map((cat, idx) => (
                 <button
                   key={idx}
                   onClick={() => setActiveCategory(idx)}
-                  className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
+                  className={`px-3 py-1.5 rounded-lg font-mono text-xs transition-all ${
                     activeCategory === idx
-                      ? 'bg-sky-500 text-slate-950 font-bold shadow-md'
-                      : 'bg-slate-900 border border-slate-800 text-slate-400 hover:text-white'
+                      ? 'bg-sky-500 text-slate-950 font-bold shadow-[0_0_15px_#38bdf866]'
+                      : 'bg-slate-950 border border-slate-800 text-slate-400 hover:text-white'
                   }`}
                 >
-                  {cat.title.split(' ')[0]}
+                  0{idx + 1}. {cat.title.split(' ')[0]}
                 </button>
               ))}
             </div>
@@ -97,37 +98,37 @@ export const Skills: React.FC = () => {
 
         {/* Selected Skill Category Card */}
         <ScrollReveal delay={150}>
-          <SpotlightCard className="p-8 mb-8 border-slate-800">
+          <SpotlightCard className="p-8 mb-8 border-sky-500/30">
             <div className="flex items-center justify-between mb-6">
               <div className="flex items-center gap-4">
-                {React.createElement(skillCategories[activeCategory].icon, { className: "w-6 h-6 text-sky-400" })}
+                {React.createElement(skillCategories[activeCategory].icon, { className: "w-7 h-7 text-sky-400" })}
                 <div>
-                  <h3 className="text-xl font-bold text-white">
+                  <h3 className="text-2xl font-bold text-white">
                     {skillCategories[activeCategory].title}
                   </h3>
-                  <p className="text-xs text-slate-400 mt-0.5">
+                  <p className="text-xs text-slate-400 font-mono mt-0.5">
                     {skillCategories[activeCategory].description}
                   </p>
                 </div>
               </div>
-              <span className="px-3 py-1 rounded-full bg-slate-900 border border-slate-800 text-sky-400 text-xs font-medium">
+              <span className="px-3 py-1 rounded-full bg-sky-950 border border-sky-500/40 text-sky-300 font-mono text-xs">
                 {skillCategories[activeCategory].badge}
               </span>
             </div>
 
-            <div className="space-y-5">
+            <div className="space-y-6">
               {skillCategories[activeCategory].skills.map((skill, sIdx) => (
                 <div key={sIdx} className="space-y-2">
                   <div className="flex justify-between items-center text-sm">
-                    <span className="font-medium text-slate-200 flex items-center gap-2">
+                    <span className="font-semibold text-slate-200 flex items-center gap-2">
                       <span className="w-1.5 h-1.5 rounded-full bg-sky-400" />
                       {skill.name}
                     </span>
-                    <span className="text-xs text-slate-400">{skill.desc}</span>
+                    <span className="font-mono text-xs text-slate-400">{skill.desc}</span>
                   </div>
-                  <div className="h-2 w-full bg-slate-950 rounded-full overflow-hidden border border-slate-800/80">
+                  <div className="h-2.5 w-full bg-slate-950 rounded-full overflow-hidden p-0.5 border border-slate-800">
                     <div
-                      className="h-full bg-sky-400 rounded-full transition-all duration-700 ease-out"
+                      className="h-full bg-gradient-to-r from-sky-500 to-indigo-400 rounded-full transition-all duration-700 ease-out shadow-[0_0_10px_#38bdf880]"
                       style={{ width: `${skill.level}%` }}
                     />
                   </div>
@@ -139,6 +140,7 @@ export const Skills: React.FC = () => {
 
         {/* Slide Down Accordion View */}
         <div className="space-y-4">
+          <h4 className="text-xs font-mono text-slate-400 uppercase tracking-widest mb-2">// Expand All Skill Categories (Slide-Down View)</h4>
           {skillCategories.map((cat, idx) => (
             <ScrollReveal key={idx} delay={200 + idx * 100}>
               <SlideDownPanel
@@ -150,12 +152,12 @@ export const Skills: React.FC = () => {
               >
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {cat.skills.map((s, sIdx) => (
-                    <div key={sIdx} className="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800">
-                      <div className="flex justify-between font-semibold text-white text-sm mb-1">
+                    <div key={sIdx} className="p-3.5 rounded-xl bg-slate-900 border border-slate-800">
+                      <div className="flex justify-between font-bold text-white text-sm mb-1">
                         <span>{s.name}</span>
-                        <span className="text-sky-400 text-xs">{s.level}%</span>
+                        <span className="text-sky-400 font-mono text-xs">{s.level}%</span>
                       </div>
-                      <p className="text-xs text-slate-400">{s.desc}</p>
+                      <p className="text-xs text-slate-400 font-mono">{s.desc}</p>
                     </div>
                   ))}
                 </div>
