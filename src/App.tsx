@@ -2,45 +2,53 @@ import React, { useState } from 'react';
 import { Analytics } from '@vercel/analytics/react';
 import KineticGrid from '@/components/ui/kinetic-grid';
 import { Navbar } from '@/components/Navbar';
-import RainingLetters from '@/components/ui/modern-animated-hero-section';
+import { WelcomeSection } from '@/components/WelcomeSection';
 import { About } from '@/components/About';
 import { Skills } from '@/components/Skills';
 import { Projects } from '@/components/Projects';
 import { Certifications } from '@/components/Certifications';
+import { SocialConnect } from '@/components/ui/connect-with-us';
 import { Footer } from '@/components/Footer';
 import { ResumeModal } from '@/components/ResumeModal';
+import { AiAssistantWidget } from '@/components/ui/AiAssistantWidget';
 
 export function App() {
   const [isResumeOpen, setIsResumeOpen] = useState(false);
 
   return (
     <KineticGrid globalColor="default">
-      <div className="min-h-screen text-slate-100 selection:bg-cyan-500 selection:text-slate-950 font-sans">
+      <div className="min-h-screen bg-[#0d090a] text-slate-100 selection:bg-rose-600 selection:text-white font-sans relative">
         {/* Navigation */}
         <Navbar onOpenResume={() => setIsResumeOpen(true)} />
 
-        {/* Hero Section */}
-        <section id="hero">
-          <RainingLetters />
-        </section>
+        {/* Executive Welcome Hero Section */}
+        <WelcomeSection onOpenResume={() => setIsResumeOpen(true)} />
 
-        {/* About & Education */}
+        {/* About & Academic Profile */}
         <About />
 
-        {/* Technical Skills & Stack */}
+        {/* Technical Stack */}
         <Skills />
 
         {/* Academic Projects */}
         <Projects />
 
-        {/* Certifications & Hackathons */}
+        {/* Verified Certifications & Hackathons */}
         <Certifications />
+
+        {/* 3D Social Connect End Section */}
+        <section id="connect">
+          <SocialConnect />
+        </section>
 
         {/* Footer */}
         <Footer />
 
-        {/* Resume Document Viewer Modal */}
+        {/* Official Resume View Modal (Direct PDF Hooked) */}
         <ResumeModal isOpen={isResumeOpen} onClose={() => setIsResumeOpen(false)} />
+
+        {/* Interactive AI Chat Assistant Widget */}
+        <AiAssistantWidget onOpenResume={() => setIsResumeOpen(true)} />
 
         {/* Vercel Analytics */}
         <Analytics />
