@@ -39,16 +39,15 @@ export const Projects: React.FC = () => {
   ];
 
   return (
-    <section id="projects" className="py-24 relative overflow-hidden">
+    <section id="projects" className="py-24 relative overflow-hidden border-t border-rose-900/40">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <ScrollReveal>
           <div className="flex items-center gap-3 mb-4">
-            <div className="h-px w-8 bg-sky-500" />
-            <span className="font-mono text-sky-400 text-sm tracking-widest uppercase">// Project Vault</span>
+            <span className="font-mono text-rose-400 text-xs tracking-widest uppercase font-semibold">Project Vault</span>
           </div>
 
           <h2 className="text-3xl sm:text-5xl font-bold tracking-tight text-white mb-4">
-            Featured <span className="text-sky-400 font-mono">Engineering Projects</span>
+            Featured <span className="text-rose-400 font-mono">Engineering Projects</span>
           </h2>
           <p className="text-slate-400 text-base mb-12 max-w-2xl">
             Click to expand any project panel below to reveal system architecture, key contributions, and source repositories.
@@ -75,38 +74,38 @@ export const Projects: React.FC = () => {
 
                     {/* Highlights Bullet list */}
                     <div className="space-y-2.5">
-                      <span className="text-xs font-mono text-sky-400 uppercase tracking-wider block">
+                      <span className="text-xs font-mono text-rose-400 uppercase tracking-wider block font-semibold">
                         Key Engineering Contributions:
                       </span>
                       {project.highlights.map((item, hIdx) => (
                         <div key={hIdx} className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-300">
-                          <CheckCircle className="w-4 h-4 text-sky-400 shrink-0 mt-0.5" />
+                          <CheckCircle className="w-4 h-4 text-rose-400 shrink-0 mt-0.5" />
                           <span>{item}</span>
                         </div>
                       ))}
                     </div>
 
                     {/* Tech stack tags */}
-                    <div className="pt-4 border-t border-slate-900 flex flex-wrap items-center justify-between gap-4">
+                    <div className="pt-4 border-t border-rose-900/40 flex flex-wrap items-center justify-between gap-4">
                       <div className="flex flex-wrap gap-2">
                         {project.technologies.map((tech, tIdx) => (
                           <span
                             key={tIdx}
-                            className="px-3 py-1 rounded-md bg-slate-900 border border-slate-800 text-sky-300 text-xs font-mono"
+                            className="px-3 py-1 rounded-md bg-slate-950 border border-slate-800 text-rose-300 text-xs font-mono"
                           >
                             {tech}
                           </span>
                         ))}
                       </div>
 
-                      {/* Magnetic Action Button */}
+                      {/* Action Link Button */}
                       {project.github && (
                         <MagneticButton>
                           <a
                             href={project.github}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="px-4 py-2 rounded-lg bg-gradient-to-r from-sky-500 to-indigo-500 text-slate-950 font-bold text-xs font-mono transition-all shadow-[0_0_15px_#38bdf84d] flex items-center gap-2"
+                            className="px-4 py-2 rounded-lg bg-rose-600 hover:bg-rose-500 text-white font-bold text-xs font-mono transition-all shadow-md flex items-center gap-2 border border-rose-400/40"
                           >
                             <GithubIcon className="w-4 h-4" />
                             View Repository

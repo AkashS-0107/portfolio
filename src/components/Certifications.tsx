@@ -61,30 +61,29 @@ export const Certifications: React.FC = () => {
   ];
 
   return (
-    <section id="certifications" className="py-24 relative overflow-hidden border-t border-slate-800/80">
+    <section id="certifications" className="py-24 relative overflow-hidden border-t border-rose-900/40">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <ScrollReveal>
           <div className="flex items-center gap-3 mb-4">
-            <div className="h-px w-8 bg-sky-500" />
-            <span className="font-mono text-sky-400 text-sm tracking-widest uppercase">// Verification & Credentials</span>
+            <span className="font-mono text-rose-400 text-xs tracking-widest uppercase font-semibold">Verification & Credentials</span>
           </div>
 
           <h2 className="text-3xl sm:text-5xl font-bold tracking-tight text-white mb-12">
-            Certifications & <span className="text-sky-400 font-mono">Hackathons</span>
+            Certifications & <span className="text-rose-400 font-mono">Hackathons</span>
           </h2>
         </ScrollReveal>
 
         <div className="space-y-6">
           {/* Featured MongoDB Certificate Spotlight Card */}
           <ScrollReveal delay={100}>
-            <SpotlightCard className="p-6 border-sky-500/50 bg-gradient-to-r from-sky-950/60 via-slate-950 to-slate-950">
+            <SpotlightCard className="p-6 border-rose-900/60 bg-gradient-to-r from-rose-950/60 via-slate-950 to-slate-950">
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4">
                 <div className="flex items-center gap-3">
-                  <div className="p-3 rounded-xl bg-sky-950 border border-sky-500/40 text-sky-400">
+                  <div className="p-3 rounded-xl bg-rose-950 border border-rose-800/60 text-rose-400">
                     <Database className="w-6 h-6 animate-pulse" />
                   </div>
                   <div>
-                    <span className="px-2.5 py-0.5 rounded bg-sky-500/20 border border-sky-500/40 text-sky-300 font-mono text-[11px]">
+                    <span className="px-2.5 py-0.5 rounded bg-rose-950 border border-rose-800/60 text-rose-300 font-mono text-[11px]">
                       Official Certification • MongoDB, Inc.
                     </span>
                     <h3 className="text-xl font-bold text-white mt-1">MongoDB Basics for Students</h3>
@@ -93,7 +92,7 @@ export const Certifications: React.FC = () => {
 
                 <div className="text-right font-mono">
                   <span className="text-xs text-slate-400 block">Issued: 07-04-2026</span>
-                  <span className="text-[11px] text-sky-400 block">ID: MDBnoiow5b82a</span>
+                  <span className="text-[11px] text-rose-400 block">ID: MDBnoiow5b82a</span>
                 </div>
               </div>
 
@@ -114,9 +113,9 @@ export const Certifications: React.FC = () => {
             >
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {certifications.map((item, idx) => (
-                  <SpotlightCard key={idx} className="p-5">
+                  <SpotlightCard key={idx} className="p-5 border-rose-900/30">
                     <div className="flex items-center justify-between gap-2 mb-3">
-                      <span className="px-2.5 py-0.5 rounded bg-sky-950/80 border border-sky-500/30 text-sky-400 text-[10px] font-mono">
+                      <span className="px-2.5 py-0.5 rounded bg-rose-950/80 border border-rose-800/40 text-rose-400 text-[10px] font-mono">
                         {item.badge}
                       </span>
                       <span className="text-[10px] font-mono text-slate-500 flex items-center gap-1">
@@ -127,7 +126,7 @@ export const Certifications: React.FC = () => {
                     <h4 className="text-sm font-semibold text-white mb-1">{item.title}</h4>
                     <p className="text-xs text-slate-400 font-mono">{item.issuer}</p>
                     {item.certId && (
-                      <span className="text-[10px] font-mono text-sky-400 mt-2 block">
+                      <span className="text-[10px] font-mono text-rose-400 mt-2 block">
                         Cert ID: {item.certId}
                       </span>
                     )}
@@ -148,16 +147,16 @@ export const Certifications: React.FC = () => {
             >
               <div className="space-y-4">
                 {hackathons.map((h, idx) => (
-                  <SpotlightCard key={idx} className="p-6">
+                  <SpotlightCard key={idx} className="p-6 border-rose-900/30">
                     <div className="flex items-center justify-between mb-2">
-                      <span className="text-xs font-mono text-sky-400 flex items-center gap-1.5">
-                        <Flame className="w-4 h-4 text-sky-400 animate-pulse" />
+                      <span className="text-xs font-mono text-rose-400 flex items-center gap-1.5 font-semibold">
+                        <Flame className="w-4 h-4 text-rose-400 animate-pulse" />
                         {h.date}
                       </span>
                       <span className="text-xs font-mono text-slate-400">{h.role}</span>
                     </div>
                     <h4 className="text-lg font-bold text-white mb-1">{h.title}</h4>
-                    <p className="text-xs text-sky-300 font-mono mb-3">{h.organizer}</p>
+                    <p className="text-xs text-rose-300 font-mono mb-3">{h.organizer}</p>
                     <p className="text-xs text-slate-300 leading-relaxed">{h.desc}</p>
                   </SpotlightCard>
                 ))}

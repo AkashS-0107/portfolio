@@ -44,10 +44,10 @@ export function App() {
         {/* Footer */}
         <Footer />
 
-        {/* Official Resume View Modal (Triggered by RHS Resume button) */}
+        {/* Official Resume View Modal (Triggered exclusively by RHS Resume box & action buttons) */}
         <ResumeModal isOpen={isResumeOpen} onClose={() => setIsResumeOpen(false)} />
 
-        {/* Interactive AI Chat Assistant Widget */}
+        {/* Interactive AI Chat Assistant Widget (Red Crimson Tone) */}
         <AiAssistantWidget onOpenResume={() => setIsResumeOpen(true)} />
 
         {/* Vercel Analytics */}
