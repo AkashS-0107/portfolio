@@ -64,8 +64,7 @@ export const Certifications: React.FC = () => {
     <section id="certifications" className="py-20 relative overflow-hidden border-t border-slate-800/60">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <ScrollReveal>
-          <div className="flex items-center gap-3 mb-3">
-            <div className="h-px w-8 bg-sky-500" />
+          <div className="mb-3">
             <span className="text-sky-400 text-xs font-semibold tracking-wider uppercase">Verification & Credentials</span>
           </div>
 
