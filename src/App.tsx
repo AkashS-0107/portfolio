@@ -3,7 +3,6 @@ import { Analytics } from '@vercel/analytics/react';
 import KineticGrid from '@/components/ui/kinetic-grid';
 import { Navbar } from '@/components/Navbar';
 import { WelcomeSection } from '@/components/WelcomeSection';
-import ElegantCarousel from '@/components/ui/elegant-carousel';
 import { About } from '@/components/About';
 import { Skills } from '@/components/Skills';
 import { Projects } from '@/components/Projects';
@@ -24,11 +23,6 @@ export function App() {
         {/* Welcoming Hero Section */}
         <WelcomeSection onOpenResume={() => setIsResumeOpen(true)} />
 
-        {/* Elegant Carousel Showcase */}
-        <section id="showcase" className="py-12">
-          <ElegantCarousel />
-        </section>
-
         {/* About & Academic Profile */}
         <About />
 
@@ -38,7 +32,7 @@ export function App() {
         {/* Projects Vault */}
         <Projects />
 
-        {/* Single Verified Certifications & Hackathons Section */}
+        {/* Verified Certifications & Hackathons Section */}
         <Certifications />
 
         {/* Justin Juby Inspired 3D Social Connect End Section */}

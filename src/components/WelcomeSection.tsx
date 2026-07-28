@@ -36,11 +36,11 @@ export const WelcomeSection: React.FC<WelcomeSectionProps> = ({ onOpenResume }) 
           <div className="flex flex-wrap justify-center items-center gap-4 mt-8">
             <MagneticButton>
               <a
-                href="#showcase"
+                href="#about"
                 className="px-7 py-3.5 rounded-xl bg-rose-900/90 hover:bg-rose-800 text-white font-semibold text-xs uppercase tracking-wider transition-all duration-300 shadow-xl border border-rose-700/40 flex items-center gap-2"
               >
                 <Code2 className="w-4 h-4 text-rose-300" />
-                <span>Explore Work</span>
+                <span>Explore Profile</span>
               </a>
             </MagneticButton>
 
@@ -60,7 +60,7 @@ export const WelcomeSection: React.FC<WelcomeSectionProps> = ({ onOpenResume }) 
         <ScrollReveal delay={200}>
           <div className="mt-12">
             <a
-              href="#showcase"
+              href="#about"
               className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-rose-950/30 text-slate-400 hover:text-rose-300 text-xs font-mono border border-rose-950/40 transition-all group"
             >
               <span>SCROLL TO EXPLORE</span>
