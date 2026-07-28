@@ -1,20 +1,18 @@
 import React from 'react';
-import { ArrowDown, FileText, Sparkles, Code2 } from 'lucide-react';
+import { ArrowDown, Download, Sparkles, Code2 } from 'lucide-react';
 import { MagneticButton } from '@/components/ui/micro-interactions';
 import { ScrollReveal } from '@/components/ui/scroll-reveal';
 
-interface WelcomeSectionProps {
-  onOpenResume: () => void;
-}
+export const WelcomeSection: React.FC = () => {
+  const pdfUrl = import.meta.env.BASE_URL + 'AKASH_SURESH_RESUME.pdf';
 
-export const WelcomeSection: React.FC<WelcomeSectionProps> = ({ onOpenResume }) => {
   return (
     <section id="welcome" className="relative w-full min-h-[85vh] flex flex-col justify-center items-center pt-24 pb-12 px-4 sm:px-6 lg:px-8">
       {/* Welcoming Hero Content */}
       <div className="max-w-4xl mx-auto w-full text-center flex flex-col items-center gap-6 z-10">
         <ScrollReveal>
           {/* Subtle Welcoming Pill */}
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-rose-900/30 bg-rose-950/20 text-rose-300 text-xs tracking-wider uppercase mb-2">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-rose-900/30 bg-rose-950/20 text-rose-300 text-xs tracking-wider uppercase mb-2 font-mono">
             <Sparkles className="w-3.5 h-3.5 text-rose-400" />
             <span>Full Stack & AI Engineer</span>
           </div>
@@ -44,11 +42,18 @@ export const WelcomeSection: React.FC<WelcomeSectionProps> = ({ onOpenResume }) 
               </a>
             </MagneticButton>
 
-            <MagneticButton onClick={onOpenResume}>
-              <span className="px-6 py-3.5 rounded-xl bg-rose-950/40 hover:bg-rose-950/80 text-slate-200 font-semibold text-xs uppercase tracking-wider transition-all duration-300 border border-rose-950/60 flex items-center gap-2 cursor-pointer">
-                <FileText className="w-4 h-4 text-rose-400" />
-                View Resume
-              </span>
+            {/* Direct Resume PDF Download / View Button */}
+            <MagneticButton>
+              <a
+                href={pdfUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                download="AKASH_SURESH_RESUME.pdf"
+                className="px-6 py-3.5 rounded-xl bg-rose-950/40 hover:bg-rose-950/80 text-slate-200 font-semibold text-xs uppercase tracking-wider transition-all duration-300 border border-rose-950/60 flex items-center gap-2 cursor-pointer"
+              >
+                <Download className="w-4 h-4 text-rose-400" />
+                <span>Download Resume PDF</span>
+              </a>
             </MagneticButton>
           </div>
         </ScrollReveal>

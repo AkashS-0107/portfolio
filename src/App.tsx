@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Analytics } from '@vercel/analytics/react';
 import KineticGrid from '@/components/ui/kinetic-grid';
 import { Navbar } from '@/components/Navbar';
@@ -9,20 +9,17 @@ import { Projects } from '@/components/Projects';
 import { Certifications } from '@/components/Certifications';
 import { SocialConnect } from '@/components/ui/connect-with-us';
 import { Footer } from '@/components/Footer';
-import { ResumeModal } from '@/components/ResumeModal';
 import { AiAssistantWidget } from '@/components/ui/AiAssistantWidget';
 
 export function App() {
-  const [isResumeOpen, setIsResumeOpen] = useState(false);
-
   return (
     <KineticGrid globalColor="default">
       <div className="min-h-screen bg-[#0d090a] text-slate-100 selection:bg-rose-600 selection:text-white font-sans relative">
-        {/* Navigation */}
-        <Navbar onOpenResume={() => setIsResumeOpen(true)} />
+        {/* Navigation Dock */}
+        <Navbar />
 
         {/* Executive Welcome Hero Section */}
-        <WelcomeSection onOpenResume={() => setIsResumeOpen(true)} />
+        <WelcomeSection />
 
         {/* About & Academic Profile */}
         <About />
@@ -44,11 +41,8 @@ export function App() {
         {/* Footer */}
         <Footer />
 
-        {/* Official Resume View Modal (Triggered exclusively by RHS Resume box & action buttons) */}
-        <ResumeModal isOpen={isResumeOpen} onClose={() => setIsResumeOpen(false)} />
-
-        {/* Interactive AI Chat Assistant Widget (Red Crimson Tone) */}
-        <AiAssistantWidget onOpenResume={() => setIsResumeOpen(true)} />
+        {/* Interactive AI Chat Assistant Widget */}
+        <AiAssistantWidget />
 
         {/* Vercel Analytics */}
         <Analytics />

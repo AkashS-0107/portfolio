@@ -1,15 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { FileText, Menu, X } from 'lucide-react';
+import { FileText, Menu, X, Download } from 'lucide-react';
 import { GithubIcon, LinkedinIcon } from '@/components/Icons';
 import { MagneticButton } from '@/components/ui/micro-interactions';
 
-interface NavbarProps {
-  onOpenResume: () => void;
-}
-
-export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
+export const Navbar: React.FC = () => {
   const [activeSection, setActiveSection] = useState('about');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  const pdfUrl = import.meta.env.BASE_URL + 'AKASH_SURESH_RESUME.pdf';
 
   useEffect(() => {
     const handleScroll = () => {
@@ -42,7 +40,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
 
   return (
     <>
-      {/* Sleek Minimalist Floating RHS Navigation Dock (Red Crimson Accents) */}
+      {/* Sleek Minimalist Floating RHS Navigation Dock */}
       <header className="fixed top-6 right-6 z-50 hidden md:block">
         <nav className="flex items-center gap-2 p-2 rounded-2xl bg-slate-950/90 backdrop-blur-md border border-rose-900/60 shadow-xl">
           {/* Section Nav Links */}
@@ -60,7 +58,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
             </a>
           ))}
 
-          {/* RHS Social & Resume Box Trigger */}
+          {/* RHS Social & Direct Resume PDF Link Box */}
           <div className="flex items-center gap-2 pl-2 ml-1 border-l border-rose-900/40">
             <MagneticButton>
               <a
@@ -86,12 +84,18 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
               </a>
             </MagneticButton>
 
-            {/* RHS Small Resume Box */}
-            <MagneticButton onClick={onOpenResume}>
-              <span className="px-4 py-2 rounded-xl bg-rose-600 hover:bg-rose-500 text-white font-bold text-xs uppercase tracking-wider transition-all flex items-center gap-1.5 shadow-md border border-rose-400/30 cursor-pointer">
-                <FileText className="w-3.5 h-3.5" />
-                Resume
-              </span>
+            {/* Direct Resume PDF Open / Download Link */}
+            <MagneticButton>
+              <a
+                href={pdfUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                download="AKASH_SURESH_RESUME.pdf"
+                className="px-4 py-2 rounded-xl bg-rose-600 hover:bg-rose-500 text-white font-bold text-xs uppercase tracking-wider transition-all flex items-center gap-1.5 shadow-md border border-rose-400/30 cursor-pointer"
+              >
+                <Download className="w-3.5 h-3.5" />
+                Resume PDF
+              </a>
             </MagneticButton>
           </div>
         </nav>
@@ -138,15 +142,17 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
             >
               <LinkedinIcon className="w-5 h-5" />
             </a>
-            <button
-              onClick={() => {
-                setMobileMenuOpen(false);
-                onOpenResume();
-              }}
-              className="px-3.5 py-2 rounded-xl bg-rose-600 text-white font-bold text-xs uppercase"
+            <a
+              href={pdfUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              download="AKASH_SURESH_RESUME.pdf"
+              onClick={() => setMobileMenuOpen(false)}
+              className="px-3.5 py-2 rounded-xl bg-rose-600 text-white font-bold text-xs uppercase flex items-center gap-1"
             >
-              Resume
-            </button>
+              <Download className="w-3.5 h-3.5" />
+              Resume PDF
+            </a>
           </div>
         </div>
       )}

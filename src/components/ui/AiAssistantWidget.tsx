@@ -1,11 +1,7 @@
 import React, { useState } from 'react';
-import { Bot, X, Send, Sparkles, User, FileText } from 'lucide-react';
+import { Bot, X, Send, Sparkles, User, Download } from 'lucide-react';
 
-interface AiAssistantWidgetProps {
-  onOpenResume: () => void;
-}
-
-export const AiAssistantWidget: React.FC<AiAssistantWidgetProps> = ({ onOpenResume }) => {
+export const AiAssistantWidget: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [input, setInput] = useState('');
   const [messages, setMessages] = useState<Array<{ role: 'assistant' | 'user'; content: string }>>([
@@ -14,6 +10,12 @@ export const AiAssistantWidget: React.FC<AiAssistantWidgetProps> = ({ onOpenResu
       content: "Hello! I am Akash's AI Assistant. Ask me anything about Akash's AI engineering skills, MongoDB certification, academic projects, or resume!"
     }
   ]);
+
+  const pdfUrl = import.meta.env.BASE_URL + 'AKASH_SURESH_RESUME.pdf';
+
+  const handleOpenResume = () => {
+    window.open(pdfUrl, '_blank');
+  };
 
   const handleSend = (e: React.FormEvent) => {
     e.preventDefault();
@@ -36,7 +38,7 @@ export const AiAssistantWidget: React.FC<AiAssistantWidgetProps> = ({ onOpenResu
       } else if (lower.includes('contact') || lower.includes('email')) {
         reply = "You can reach Akash directly at akashscontact7@gmail.com or call +91-9363984548.";
       } else if (lower.includes('resume') || lower.includes('cv') || lower.includes('marks') || lower.includes('gpa')) {
-        reply = "Akash's official resume includes his CGPA of 7.10/10.0, 12th Board marks (64.33%), and 10th Board marks (73.00%). You can click the 'Resume' button to view or print his official PDF document!";
+        reply = "Akash's official resume includes his CGPA of 7.10/10.0, 12th Board marks (64.33%), and 10th Board marks (73.00%). You can click the 'Download Resume PDF' button to view or download his official PDF file!";
       }
 
       setMessages((prev) => [...prev, { role: 'assistant', content: reply }]);
@@ -45,7 +47,7 @@ export const AiAssistantWidget: React.FC<AiAssistantWidgetProps> = ({ onOpenResu
 
   return (
     <div className="fixed bottom-6 right-6 z-50 font-sans">
-      {/* Floating Trigger Bubble (Red Crimson Tone) */}
+      {/* Floating Trigger Bubble */}
       {!isOpen && (
         <button
           onClick={() => setIsOpen(true)}
@@ -111,11 +113,11 @@ export const AiAssistantWidget: React.FC<AiAssistantWidgetProps> = ({ onOpenResu
           {/* Quick Action Pills */}
           <div className="p-2 bg-slate-950 border-t border-rose-900/40 flex gap-1.5 overflow-x-auto no-scrollbar">
             <button
-              onClick={onOpenResume}
+              onClick={handleOpenResume}
               className="px-2.5 py-1 rounded-full bg-rose-950/60 hover:bg-rose-600 text-rose-300 hover:text-white border border-rose-800/60 text-[11px] font-medium shrink-0 transition-colors flex items-center gap-1"
             >
-              <FileText className="w-3 h-3" />
-              View Resume
+              <Download className="w-3 h-3" />
+              Download Resume PDF
             </button>
             <button
               onClick={() => {
