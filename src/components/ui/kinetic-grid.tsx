@@ -20,14 +20,14 @@ interface Ripple {
 
 // ─── Constants ────────────────────────────────────────────────────────────────
 
-const CELL_SIZE = 60;
-const INFLUENCE_RADIUS = 240;
-const MAX_WARP = 20;
-const DOT_SPACING = 32;
+const CELL_SIZE = 65;
+const INFLUENCE_RADIUS = 220;
+const MAX_WARP = 18;
+const DOT_SPACING = 36;
 const LERP_SPEED = 0.08;
 
-const NODE_BASE_RADIUS = 1.5;
-const NODE_ACTIVE_RADIUS = 2.8;
+const NODE_BASE_RADIUS = 1.4;
+const NODE_ACTIVE_RADIUS = 2.5;
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 
@@ -104,7 +104,7 @@ export default function KineticGrid({
         const diff = rdist - r.radius;
         if (Math.abs(diff) < waveWidth) {
           const strength =
-            (1 - Math.abs(diff) / waveWidth) * r.opacity * 16 * pinFactor;
+            (1 - Math.abs(diff) / waveWidth) * r.opacity * 14 * pinFactor;
           const angle = Math.atan2(rdy, rdx);
           const sign = diff < 0 ? -1 : 1;
           rx += Math.cos(angle) * strength * sign * -1;
@@ -131,7 +131,7 @@ export default function KineticGrid({
     [],
   );
 
-  // ── Draw (Red / Crimson Theme, Extremely Bland Subtle Lines) ───────────────
+  // ── Draw (Muted Deep Wine Crimson Theme) ────────────────────────────────────
 
   const draw = useCallback(
     (now: number) => {
@@ -146,22 +146,22 @@ export default function KineticGrid({
 
       const theme = {
         default: {
-          bg: "#0a0507",
+          bg: "#0d090a",
           lineBaseHex: "#ffffff",
-          lineBaseAlpha: 0.04,
-          lineActiveHex: "#ef4444",
-          lineActiveAlpha: 0.6,
+          lineBaseAlpha: 0.03,
+          lineActiveHex: "#be123c",
+          lineActiveAlpha: 0.4,
           nodeBaseHex: "#ffffff",
-          nodeActiveHex: "#f87171",
-          glowHex: "#ef4444",
-          rippleHex: "#ef4444",
+          nodeActiveHex: "#e11d48",
+          glowHex: "#be123c",
+          rippleHex: "#be123c",
         },
         monochrome: {
           bg: "#000000",
           lineBaseHex: "#ffffff",
           lineBaseAlpha: 0.03,
           lineActiveHex: "#ffffff",
-          lineActiveAlpha: 0.7,
+          lineActiveAlpha: 0.6,
           nodeBaseHex: "#ffffff",
           nodeActiveHex: "#ffffff",
           glowHex: "#ffffff",
@@ -176,11 +176,11 @@ export default function KineticGrid({
       ctx.fillRect(0, 0, W, H);
 
       // Subtle background dot grid
-      ctx.fillStyle = "#ffffff08";
+      ctx.fillStyle = "#ffffff06";
       for (let x = DOT_SPACING / 2; x < W; x += DOT_SPACING) {
         for (let y = DOT_SPACING / 2; y < H; y += DOT_SPACING) {
           ctx.beginPath();
-          ctx.arc(x, y, 0.6, 0, Math.PI * 2);
+          ctx.arc(x, y, 0.5, 0, Math.PI * 2);
           ctx.fill();
         }
       }
@@ -189,7 +189,7 @@ export default function KineticGrid({
       for (let i = ripples.length - 1; i >= 0; i--) {
         const r = ripples[i];
         const age = (now - r.born) / 1000;
-        r.radius = Math.max(0, age * 380);
+        r.radius = Math.max(0, age * 360);
         r.opacity = Math.max(0, 1 - age * 1.2);
         if (r.opacity <= 0) ripples.splice(i, 1);
       }
@@ -232,7 +232,7 @@ export default function KineticGrid({
         ctx.moveTo(p1.x, p1.y);
         ctx.lineTo(p2.x, p2.y);
         ctx.strokeStyle = t > 0.4 ? getHexWithAlpha(theme.lineActiveHex, currentAlpha) : getHexWithAlpha(theme.lineBaseHex, currentAlpha);
-        ctx.lineWidth = lerpN(0.6, 1.2, t);
+        ctx.lineWidth = lerpN(0.5, 1.1, t);
         ctx.stroke();
       };
 
@@ -265,7 +265,7 @@ export default function KineticGrid({
           const r = lerpN(NODE_BASE_RADIUS, NODE_ACTIVE_RADIUS, t);
 
           if (t > 0.3) {
-            const glowR = r + lerpN(0, 5, (t - 0.3) / 0.7);
+            const glowR = r + lerpN(0, 4, (t - 0.3) / 0.7);
             const grd = ctx.createRadialGradient(
               p.x,
               p.y,
@@ -274,7 +274,7 @@ export default function KineticGrid({
               p.y,
               glowR,
             );
-            grd.addColorStop(0, getHexWithAlpha(theme.glowHex, t * 0.3));
+            grd.addColorStop(0, getHexWithAlpha(theme.glowHex, t * 0.25));
             grd.addColorStop(1, getHexWithAlpha(theme.glowHex, 0));
             ctx.beginPath();
             ctx.arc(p.x, p.y, glowR, 0, Math.PI * 2);
@@ -284,7 +284,7 @@ export default function KineticGrid({
 
           ctx.beginPath();
           ctx.arc(p.x, p.y, r, 0, Math.PI * 2);
-          ctx.fillStyle = t > 0.4 ? getHexWithAlpha(theme.nodeActiveHex, 0.9) : getHexWithAlpha(theme.nodeBaseHex, 0.15);
+          ctx.fillStyle = t > 0.4 ? getHexWithAlpha(theme.nodeActiveHex, 0.8) : getHexWithAlpha(theme.nodeBaseHex, 0.12);
           ctx.fill();
         }
       }
@@ -294,8 +294,8 @@ export default function KineticGrid({
         const safeRadius = Math.max(0, r.radius);
         ctx.beginPath();
         ctx.arc(r.x, r.y, safeRadius, 0, Math.PI * 2);
-        ctx.strokeStyle = getHexWithAlpha(theme.rippleHex, r.opacity * 0.25);
-        ctx.lineWidth = 1.2;
+        ctx.strokeStyle = getHexWithAlpha(theme.rippleHex, r.opacity * 0.2);
+        ctx.lineWidth = 1.1;
         ctx.stroke();
       }
     },
@@ -373,7 +373,7 @@ export default function KineticGrid({
     <div
       className={cn(
         "relative w-full min-h-screen overflow-hidden",
-        globalColor === "monochrome" ? "bg-[#000000]" : "bg-[#0a0507]",
+        globalColor === "monochrome" ? "bg-[#000000]" : "bg-[#0d090a]",
         className,
       )}
     >

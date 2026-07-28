@@ -43,7 +43,7 @@ export const Projects: React.FC = () => {
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <ScrollReveal>
           <div className="mb-3">
-            <span className="text-rose-400 text-xs font-semibold tracking-wider uppercase">Project Vault</span>
+            <span className="text-rose-300/90 text-xs font-semibold tracking-wider uppercase">Project Vault</span>
           </div>
 
           <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-white mb-4">
@@ -74,12 +74,12 @@ export const Projects: React.FC = () => {
 
                     {/* Highlights Bullet list */}
                     <div className="space-y-2">
-                      <span className="text-xs text-rose-400 uppercase tracking-wider font-semibold block">
+                      <span className="text-xs text-rose-300/90 uppercase tracking-wider font-semibold block">
                         Key Engineering Contributions:
                       </span>
                       {project.highlights.map((item, hIdx) => (
                         <div key={hIdx} className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-300">
-                          <CheckCircle className="w-4 h-4 text-rose-400 shrink-0 mt-0.5" />
+                          <CheckCircle className="w-4 h-4 text-rose-300 shrink-0 mt-0.5" />
                           <span>{item}</span>
                         </div>
                       ))}
@@ -105,7 +105,7 @@ export const Projects: React.FC = () => {
                             href={project.github}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="px-4 py-2 rounded-lg bg-rose-600 hover:bg-rose-500 text-white font-bold text-xs transition-all flex items-center gap-2"
+                            className="px-4 py-2 rounded-lg bg-rose-900/90 hover:bg-rose-800 text-rose-100 font-semibold text-xs transition-all flex items-center gap-2 border border-rose-700/40"
                           >
                             <GithubIcon className="w-4 h-4" />
                             View Repository

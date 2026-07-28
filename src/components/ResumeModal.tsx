@@ -10,12 +10,12 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-[#0a0507]/80 backdrop-blur-md">
-      <div className="bg-[#120a0d] border border-rose-950/60 rounded-2xl w-full max-w-4xl max-h-[90vh] overflow-hidden flex flex-col shadow-2xl animate-in fade-in zoom-in-95 duration-200">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-[#0d090a]/80 backdrop-blur-md">
+      <div className="bg-[#140b0d] border border-rose-950/60 rounded-2xl w-full max-w-4xl max-h-[90vh] overflow-hidden flex flex-col shadow-2xl animate-in fade-in zoom-in-95 duration-200">
         {/* Modal Header */}
-        <div className="px-6 py-4 bg-[#0a0507] border-b border-rose-950/40 flex items-center justify-between">
+        <div className="px-6 py-4 bg-[#0d090a] border-b border-rose-950/40 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="p-2 rounded-lg bg-rose-950/60 text-rose-400">
+            <div className="p-2 rounded-lg bg-rose-950/60 text-rose-300">
               <FileText className="w-5 h-5" />
             </div>
             <div>
@@ -27,7 +27,7 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
           <div className="flex items-center gap-3">
             <button
               onClick={() => window.print()}
-              className="px-3.5 py-1.5 rounded-lg bg-rose-600 hover:bg-rose-500 text-white font-bold text-xs transition-all flex items-center gap-1.5"
+              className="px-3.5 py-1.5 rounded-lg bg-rose-900/90 hover:bg-rose-800 text-rose-100 font-semibold text-xs transition-all flex items-center gap-1.5 border border-rose-700/40"
             >
               <Download className="w-3.5 h-3.5" />
               Download / Print PDF
@@ -42,22 +42,22 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
         </div>
 
         {/* Modal Body - Resume Content */}
-        <div className="flex-1 p-6 sm:p-8 overflow-y-auto font-sans text-slate-200 space-y-7 bg-[#0f090b]">
+        <div className="flex-1 p-6 sm:p-8 overflow-y-auto font-sans text-slate-200 space-y-7 bg-[#10080a]">
           {/* Resume Header */}
           <div className="pb-6">
             <h1 className="text-3xl font-extrabold text-white tracking-wider">AKASH SURESH</h1>
-            <p className="text-rose-400 text-sm font-medium mt-1">B.Tech Computer Science & Engineering (Specialization in AI & ML)</p>
+            <p className="text-rose-300 text-sm font-medium mt-1">B.Tech Computer Science & Engineering (Specialization in AI & ML)</p>
             
             <div className="flex flex-wrap gap-4 mt-4 text-xs text-slate-400">
-              <span className="flex items-center gap-1"><MapPin className="w-3.5 h-3.5 text-rose-400" /> Chennai, Tamil Nadu, India</span>
-              <span className="flex items-center gap-1"><Phone className="w-3.5 h-3.5 text-rose-400" /> +91-9363984548</span>
-              <span className="flex items-center gap-1"><Mail className="w-3.5 h-3.5 text-rose-400" /> akashscontact7@gmail.com</span>
+              <span className="flex items-center gap-1"><MapPin className="w-3.5 h-3.5 text-rose-300" /> Chennai, Tamil Nadu, India</span>
+              <span className="flex items-center gap-1"><Phone className="w-3.5 h-3.5 text-rose-300" /> +91-9363984548</span>
+              <span className="flex items-center gap-1"><Mail className="w-3.5 h-3.5 text-rose-300" /> akashscontact7@gmail.com</span>
             </div>
           </div>
 
           {/* Professional Summary */}
           <div>
-            <h2 className="text-xs text-rose-400 uppercase tracking-wider font-semibold mb-2">Professional Summary</h2>
+            <h2 className="text-xs text-rose-300 uppercase tracking-wider font-semibold mb-2">Professional Summary</h2>
             <p className="text-sm leading-relaxed text-slate-300">
               Third-year B.Tech student pursuing Computer Science and Engineering with specialization in Artificial Intelligence and Machine Learning, with hands-on experience in Python, C/C++, and SQL/MongoDB-based application development. Practical experience working with modern AI development tools (Claude Code, Codex, Antigravity) and workflow automation (n8n) to build and optimize AI-agent-driven applications and websites. Detail-oriented, with a track record of quality assurance and UI improvement work on team software projects. Seeking an internship to apply technical and AI-tooling skills in a real-world engineering environment.
             </p>
@@ -65,12 +65,12 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
 
           {/* Education */}
           <div>
-            <h2 className="text-xs text-rose-400 uppercase tracking-wider font-semibold mb-3">Education</h2>
+            <h2 className="text-xs text-rose-300 uppercase tracking-wider font-semibold mb-3">Education</h2>
             <div className="space-y-3 text-sm">
               <div className="p-4 rounded-xl bg-rose-950/20">
                 <div className="flex justify-between font-bold text-white">
                   <span>Bachelor of Technology (B.Tech) – Computer Science & Engineering (Specialization in AI & ML)</span>
-                  <span className="text-rose-400 text-xs font-medium">Expected Grad: May 2028</span>
+                  <span className="text-rose-300 text-xs font-medium">Expected Grad: May 2028</span>
                 </div>
                 <div className="text-xs text-slate-400 mt-1">SRM Institute of Science and Technology, Ramapuram Campus</div>
               </div>
@@ -89,7 +89,7 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
 
           {/* Technical Skills */}
           <div>
-            <h2 className="text-xs text-rose-400 uppercase tracking-wider font-semibold mb-3">Technical Skills</h2>
+            <h2 className="text-xs text-rose-300 uppercase tracking-wider font-semibold mb-3">Technical Skills</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
               <div className="p-3 rounded-lg bg-rose-950/20">
                 <strong className="text-white">Programming Languages:</strong> Python, C, C++, Java (Basic), SQL
@@ -108,12 +108,12 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
 
           {/* Academic Projects */}
           <div>
-            <h2 className="text-xs text-rose-400 uppercase tracking-wider font-semibold mb-3">Academic Projects</h2>
+            <h2 className="text-xs text-rose-300 uppercase tracking-wider font-semibold mb-3">Academic Projects</h2>
             <div className="space-y-4 text-sm">
               <div className="p-4 rounded-xl bg-rose-950/20">
                 <div className="font-bold text-white flex justify-between">
                   <span>WorkSure – Blue-Collar Worker Verification Platform (Team Project)</span>
-                  <a href="https://github.com/AkashS-0107/worksure.git" target="_blank" className="text-xs text-rose-400 hover:underline flex items-center gap-1 font-normal">GitHub Repo <ExternalLink className="w-3 h-3"/></a>
+                  <a href="https://github.com/AkashS-0107/worksure.git" target="_blank" className="text-xs text-rose-300 hover:underline flex items-center gap-1 font-normal">GitHub Repo <ExternalLink className="w-3 h-3"/></a>
                 </div>
                 <ul className="list-disc list-inside text-xs text-slate-300 mt-2 space-y-1">
                   <li>Contributed to platform concept connecting verified skilled workers with employers.</li>
@@ -133,30 +133,30 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
 
           {/* Certifications & Hackathons */}
           <div>
-            <h2 className="text-xs text-rose-400 uppercase tracking-wider font-semibold mb-3">Certifications & Competitions</h2>
+            <h2 className="text-xs text-rose-300 uppercase tracking-wider font-semibold mb-3">Certifications & Competitions</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
               <div className="p-2.5 rounded-lg bg-rose-950/20 flex items-center gap-2 sm:col-span-2">
-                <Database className="w-4 h-4 text-rose-400 shrink-0" />
+                <Database className="w-4 h-4 text-rose-300 shrink-0" />
                 <span className="font-bold text-white">MongoDB Basics for Students – MongoDB, Inc. (07-04-2026 | ID: MDBnoiow5b82a)</span>
               </div>
               <div className="p-2.5 rounded-lg bg-rose-950/20 flex items-center gap-2">
-                <CheckCircle2 className="w-4 h-4 text-rose-400 shrink-0" />
+                <CheckCircle2 className="w-4 h-4 text-rose-300 shrink-0" />
                 <span>Introduction to AI – Adobe Learning Manager (2026)</span>
               </div>
               <div className="p-2.5 rounded-lg bg-rose-950/20 flex items-center gap-2">
-                <CheckCircle2 className="w-4 h-4 text-rose-400 shrink-0" />
+                <CheckCircle2 className="w-4 h-4 text-rose-300 shrink-0" />
                 <span>Intro to OS – NPTEL IIT Madras (Elite Certification, 2025)</span>
               </div>
               <div className="p-2.5 rounded-lg bg-rose-950/20 flex items-center gap-2">
-                <CheckCircle2 className="w-4 h-4 text-rose-400 shrink-0" />
+                <CheckCircle2 className="w-4 h-4 text-rose-300 shrink-0" />
                 <span>Python & Java Basic – HackerRank Certificates</span>
               </div>
               <div className="p-2.5 rounded-lg bg-rose-950/20 flex items-center gap-2">
-                <CheckCircle2 className="w-4 h-4 text-rose-400 shrink-0" />
+                <CheckCircle2 className="w-4 h-4 text-rose-300 shrink-0" />
                 <span>THREX Hackathon – Participant (Zoho x Gritscape 2026)</span>
               </div>
               <div className="p-2.5 rounded-lg bg-rose-950/20 flex items-center gap-2">
-                <CheckCircle2 className="w-4 h-4 text-rose-400 shrink-0" />
+                <CheckCircle2 className="w-4 h-4 text-rose-300 shrink-0" />
                 <span>Code Wars ASIMOV '25 – Robotics & Automation Dept</span>
               </div>
             </div>

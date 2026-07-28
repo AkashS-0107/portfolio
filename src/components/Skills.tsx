@@ -63,7 +63,7 @@ export const Skills: React.FC = () => {
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <ScrollReveal>
           <div className="mb-3">
-            <span className="text-rose-400 text-xs font-semibold tracking-wider uppercase">Technical Stack</span>
+            <span className="text-rose-300/90 text-xs font-semibold tracking-wider uppercase">Technical Stack</span>
           </div>
 
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
@@ -84,8 +84,8 @@ export const Skills: React.FC = () => {
                   onClick={() => setActiveCategory(idx)}
                   className={`px-3.5 py-1.5 rounded-lg text-xs font-medium transition-all ${
                     activeCategory === idx
-                      ? 'bg-rose-600 text-white font-bold shadow-md'
-                      : 'bg-rose-950/30 text-slate-400 hover:text-white'
+                      ? 'bg-rose-900/90 text-rose-100 font-semibold border border-rose-700/40 shadow-sm'
+                      : 'bg-rose-950/20 text-slate-400 hover:text-white'
                   }`}
                 >
                   {cat.title.split(' ')[0]}
@@ -100,7 +100,7 @@ export const Skills: React.FC = () => {
           <SpotlightCard className="p-8 mb-8">
             <div className="flex items-center justify-between mb-6">
               <div className="flex items-center gap-4">
-                {React.createElement(skillCategories[activeCategory].icon, { className: "w-6 h-6 text-rose-400" })}
+                {React.createElement(skillCategories[activeCategory].icon, { className: "w-6 h-6 text-rose-300" })}
                 <div>
                   <h3 className="text-xl font-bold text-white">
                     {skillCategories[activeCategory].title}
@@ -110,7 +110,7 @@ export const Skills: React.FC = () => {
                   </p>
                 </div>
               </div>
-              <span className="px-3 py-1 rounded-full bg-rose-950/60 text-rose-300 text-xs font-medium">
+              <span className="px-3 py-1 rounded-full bg-rose-950/50 text-rose-300 text-xs font-medium border border-rose-900/30">
                 {skillCategories[activeCategory].badge}
               </span>
             </div>
@@ -120,14 +120,14 @@ export const Skills: React.FC = () => {
                 <div key={sIdx} className="space-y-2">
                   <div className="flex justify-between items-center text-sm">
                     <span className="font-medium text-slate-200 flex items-center gap-2">
-                      <span className="w-1.5 h-1.5 rounded-full bg-rose-500" />
+                      <span className="w-1.5 h-1.5 rounded-full bg-rose-400" />
                       {skill.name}
                     </span>
                     <span className="text-xs text-slate-400">{skill.desc}</span>
                   </div>
-                  <div className="h-2 w-full bg-rose-950/40 rounded-full overflow-hidden">
+                  <div className="h-2 w-full bg-rose-950/30 rounded-full overflow-hidden">
                     <div
-                      className="h-full bg-rose-500 rounded-full transition-all duration-700 ease-out"
+                      className="h-full bg-rose-800/80 rounded-full transition-all duration-700 ease-out"
                       style={{ width: `${skill.level}%` }}
                     />
                   </div>
@@ -153,7 +153,7 @@ export const Skills: React.FC = () => {
                     <div key={sIdx} className="p-3.5 rounded-xl bg-rose-950/20">
                       <div className="flex justify-between font-semibold text-white text-sm mb-1">
                         <span>{s.name}</span>
-                        <span className="text-rose-400 text-xs">{s.level}%</span>
+                        <span className="text-rose-300 text-xs">{s.level}%</span>
                       </div>
                       <p className="text-xs text-slate-400">{s.desc}</p>
                     </div>

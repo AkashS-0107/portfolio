@@ -18,7 +18,7 @@ export const About: React.FC = () => {
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <ScrollReveal>
           <div className="mb-3">
-            <span className="text-rose-400 text-xs font-semibold tracking-wider uppercase">Overview & Background</span>
+            <span className="text-rose-300/90 text-xs font-semibold tracking-wider uppercase">Overview & Background</span>
           </div>
 
           <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-white mb-4">
@@ -49,15 +49,15 @@ export const About: React.FC = () => {
                 
                 <div className="pt-4 grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs text-slate-400">
                   <div className="flex items-center gap-2 p-2.5 rounded-lg bg-rose-950/20">
-                    <MapPin className="w-4 h-4 text-rose-400 shrink-0" />
+                    <MapPin className="w-4 h-4 text-rose-300 shrink-0" />
                     <span>Chennai, TN, India</span>
                   </div>
                   <div className="flex items-center gap-2 p-2.5 rounded-lg bg-rose-950/20">
-                    <Mail className="w-4 h-4 text-rose-400 shrink-0" />
+                    <Mail className="w-4 h-4 text-rose-300 shrink-0" />
                     <span className="truncate">akashscontact7@gmail.com</span>
                   </div>
                   <div className="flex items-center gap-2 p-2.5 rounded-lg bg-rose-950/20">
-                    <Phone className="w-4 h-4 text-rose-400 shrink-0" />
+                    <Phone className="w-4 h-4 text-rose-300 shrink-0" />
                     <span>+91 9363984548</span>
                   </div>
                 </div>
@@ -77,12 +77,12 @@ export const About: React.FC = () => {
                 <SpotlightCard className="p-6">
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
                     <h4 className="text-lg font-bold text-white">Bachelor of Technology (B.Tech) – Computer Science & Engineering (Specialization in AI/ML)</h4>
-                    <span className="px-3 py-1 rounded bg-rose-950/60 text-rose-400 text-xs font-medium">
+                    <span className="px-3 py-1 rounded bg-rose-950/50 text-rose-300 text-xs font-medium border border-rose-900/30">
                       Expected Grad: May 2028
                     </span>
                   </div>
                   <p className="text-sm text-slate-400 mb-3">SRM Institute of Science and Technology, Ramapuram Campus</p>
-                  <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-rose-950/30 text-rose-300 text-xs">
+                  <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-rose-950/25 text-rose-200/90 text-xs">
                     Computer Science & Engineering • Specialization in Artificial Intelligence & Machine Learning
                   </div>
                 </SpotlightCard>
@@ -115,7 +115,7 @@ export const About: React.FC = () => {
                 {competencies.map((item, idx) => (
                   <SpotlightCard key={idx} className="p-4">
                     <div className="flex items-center gap-3">
-                      <div className="p-2 rounded-lg bg-rose-950/40 text-rose-400">
+                      <div className="p-2 rounded-lg bg-rose-950/40 text-rose-300">
                         <CheckCircle2 className="w-4 h-4" />
                       </div>
                       <span className="text-sm font-medium text-slate-200">{item}</span>
