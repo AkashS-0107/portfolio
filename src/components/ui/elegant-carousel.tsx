@@ -21,30 +21,12 @@ const slides: SlideData[] = [
   },
   {
     title: 'WorkSure Platform',
-    subtitle: 'Featured Project',
+    subtitle: 'Featured Engineering Project',
     description:
-      'Skill verification and employer trust ecosystem bridging skilled blue-collar workers with prospective employers through verified credentials.',
+      'Skill verification and employer trust ecosystem bridging skilled blue-collar workers with prospective employers through verified credentials and trust scores.',
     accent: '#be123c',
     imageUrl:
       'https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=900&h=1200&fit=crop&q=80',
-  },
-  {
-    title: 'MongoDB Certified',
-    subtitle: 'Official Credentials',
-    description:
-      'MongoDB Basics for Students certified developer authorized by MongoDB, Inc. Expert in NoSQL schema design and relational SQL database operations.',
-    accent: '#fb7185',
-    imageUrl:
-      'https://images.unsplash.com/photo-1544383835-bda2bc66a55d?w=900&h=1200&fit=crop&q=80',
-  },
-  {
-    title: 'Agentic AI Workflows',
-    subtitle: 'Technical Specialization',
-    description:
-      'Harnessing Claude Code, Codex, Antigravity, and n8n autonomous workflow engines to build production-ready digital products.',
-    accent: '#fda4af',
-    imageUrl:
-      'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=900&h=1200&fit=crop&q=80',
   },
 ];
 
@@ -228,8 +210,8 @@ export default function ElegantCarousel() {
         </div>
       </div>
 
-      {/* Progress Indicators */}
-      <div className="carousel-progress-bar">
+      {/* Progress Indicators - 2 Slides */}
+      <div className="carousel-progress-bar max-w-xl mx-auto" style={{ gridTemplateColumns: 'repeat(2, 1fr)' }}>
         {slides.map((slide, index) => (
           <button
             key={index}
