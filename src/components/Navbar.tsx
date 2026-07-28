@@ -13,7 +13,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['about', 'skills', 'projects', 'certifications'];
+      const sections = ['about', 'skills', 'projects', 'certifications', 'resume'];
       const scrollPos = window.scrollY + 200;
 
       for (const section of sections) {
@@ -37,7 +37,8 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
     { id: 'about', label: 'About' },
     { id: 'skills', label: 'Skills' },
     { id: 'projects', label: 'Projects' },
-    { id: 'certifications', label: 'Certifications' }
+    { id: 'certifications', label: 'Certifications' },
+    { id: 'resume', label: 'Resume' }
   ];
 
   return (
@@ -89,7 +90,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
             <MagneticButton onClick={onOpenResume}>
               <span className="px-4 py-2 rounded-xl bg-rose-600 hover:bg-rose-500 text-white font-bold text-xs uppercase tracking-wider transition-all flex items-center gap-1.5 shadow-md border border-rose-400/30">
                 <FileText className="w-3.5 h-3.5" />
-                Resume
+                Resume PDF
               </span>
             </MagneticButton>
           </div>
@@ -144,7 +145,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
               }}
               className="px-3.5 py-2 rounded-xl bg-rose-600 text-white font-bold text-xs uppercase"
             >
-              Resume
+              Resume PDF
             </button>
           </div>
         </div>

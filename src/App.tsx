@@ -7,6 +7,7 @@ import { About } from '@/components/About';
 import { Skills } from '@/components/Skills';
 import { Projects } from '@/components/Projects';
 import { Certifications } from '@/components/Certifications';
+import { ResumeSection } from '@/components/ResumeSection';
 import { SocialConnect } from '@/components/ui/connect-with-us';
 import { Footer } from '@/components/Footer';
 import { ResumeModal } from '@/components/ResumeModal';
@@ -27,14 +28,17 @@ export function App() {
         {/* About & Academic Profile */}
         <About />
 
-        {/* Technical Stack */}
+        {/* Technical Stack & AI Tooling */}
         <Skills />
 
-        {/* Academic Projects */}
+        {/* Featured Engineering Projects */}
         <Projects />
 
         {/* Verified Certifications & Hackathons */}
         <Certifications />
+
+        {/* Dedicated Resume Section (Embedded PDF Viewer) */}
+        <ResumeSection />
 
         {/* 3D Social Connect End Section */}
         <section id="connect">
