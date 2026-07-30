@@ -1,10 +1,24 @@
 import React from 'react';
-import { Award, Trophy, Calendar, Flame, Database } from 'lucide-react';
+import { Award, Trophy, Calendar, Flame, Database, Cloud } from 'lucide-react';
 import { SpotlightCard, SlideDownPanel } from '@/components/ui/micro-interactions';
 import { ScrollReveal } from '@/components/ui/scroll-reveal';
 
 export const Certifications: React.FC = () => {
   const certifications = [
+    {
+      title: 'Foundations of Prompt Engineering',
+      issuer: 'AWS Training & Certification (Michelle Vaz, Director)',
+      date: 'July 30, 2026',
+      badge: 'AWS Certified',
+      featured: true
+    },
+    {
+      title: 'Essentials of Prompt Engineering',
+      issuer: 'AWS Training & Certification (Michelle Vaz, Director)',
+      date: 'July 30, 2026',
+      badge: 'AWS Certified',
+      featured: true
+    },
     {
       title: 'MongoDB Basics for Students',
       issuer: 'MongoDB, Inc. (Raghu Viswanathan, VP Education)',
@@ -74,8 +88,47 @@ export const Certifications: React.FC = () => {
         </ScrollReveal>
 
         <div className="space-y-6">
-          {/* Featured MongoDB Certificate Spotlight Card */}
+          {/* Featured AWS Prompt Engineering Spotlight Cards Grid */}
           <ScrollReveal delay={100}>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <SpotlightCard className="p-6 border-rose-900/60 bg-gradient-to-r from-rose-950/60 via-slate-950 to-slate-950">
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="p-3 rounded-xl bg-rose-950 border border-rose-800/60 text-rose-400">
+                    <Cloud className="w-6 h-6 animate-pulse" />
+                  </div>
+                  <div>
+                    <span className="px-2.5 py-0.5 rounded bg-rose-950 border border-rose-800/60 text-rose-300 font-mono text-[11px]">
+                      AWS Training & Certification
+                    </span>
+                    <h3 className="text-lg font-bold text-white mt-1">Foundations of Prompt Engineering</h3>
+                  </div>
+                </div>
+                <p className="text-xs text-slate-300 leading-relaxed">
+                  Completion Certificate awarded by <strong>Michelle Vaz (Director, AWS Training & Certification)</strong> on July 30, 2026.
+                </p>
+              </SpotlightCard>
+
+              <SpotlightCard className="p-6 border-rose-900/60 bg-gradient-to-r from-rose-950/60 via-slate-950 to-slate-950">
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="p-3 rounded-xl bg-rose-950 border border-rose-800/60 text-rose-400">
+                    <Cloud className="w-6 h-6 animate-pulse" />
+                  </div>
+                  <div>
+                    <span className="px-2.5 py-0.5 rounded bg-rose-950 border border-rose-800/60 text-rose-300 font-mono text-[11px]">
+                      AWS Training & Certification
+                    </span>
+                    <h3 className="text-lg font-bold text-white mt-1">Essentials of Prompt Engineering</h3>
+                  </div>
+                </div>
+                <p className="text-xs text-slate-300 leading-relaxed">
+                  Completion Certificate awarded by <strong>Michelle Vaz (Director, AWS Training & Certification)</strong> on July 30, 2026.
+                </p>
+              </SpotlightCard>
+            </div>
+          </ScrollReveal>
+
+          {/* Featured MongoDB Certificate Spotlight Card */}
+          <ScrollReveal delay={150}>
             <SpotlightCard className="p-6 border-rose-900/60 bg-gradient-to-r from-rose-950/60 via-slate-950 to-slate-950">
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4">
                 <div className="flex items-center gap-3">
@@ -106,9 +159,9 @@ export const Certifications: React.FC = () => {
           <ScrollReveal delay={200}>
             <SlideDownPanel
               title="Verified Professional Certifications"
-              subtitle="MongoDB, Inc., Adobe, NPTEL IIT Madras & HackerRank"
+              subtitle="AWS, MongoDB, Inc., Adobe, NPTEL IIT Madras & HackerRank"
               icon={Award}
-              badge="5 Certifications"
+              badge="7 Certifications"
               defaultOpen={true}
             >
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
